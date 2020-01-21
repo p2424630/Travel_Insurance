@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInsuranceBack", "TravelInsuranceBack\TravelInsuranceBack.csproj", "{76A46ADF-23CF-4A04-8967-F357C222E360}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TravelInsuranceFront", "TravelInsuranceFront\", "{1B523982-243A-4904-B335-B432FE41EB9B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51349"
+		Debug.AspNetCompiler.PhysicalPath = "TravelInsuranceFront\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51349\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51349"
+		Release.AspNetCompiler.PhysicalPath = "TravelInsuranceFront\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51349\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51349"
+		SlnRelativePath = "TravelInsuranceFront\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInsuranceClasses", "TravelInsuranceClasses\TravelInsuranceClasses.csproj", "{3C719A5F-5357-4C86-BF63-B715624D79A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInsuranceTest", "TravelInsuranceTest\TravelInsuranceTest.csproj", "{08995C3F-5475-44A6-9424-D4E50E53AE14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76A46ADF-23CF-4A04-8967-F357C222E360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A46ADF-23CF-4A04-8967-F357C222E360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A46ADF-23CF-4A04-8967-F357C222E360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A46ADF-23CF-4A04-8967-F357C222E360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B523982-243A-4904-B335-B432FE41EB9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B523982-243A-4904-B335-B432FE41EB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B523982-243A-4904-B335-B432FE41EB9B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B523982-243A-4904-B335-B432FE41EB9B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3C719A5F-5357-4C86-BF63-B715624D79A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C719A5F-5357-4C86-BF63-B715624D79A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C719A5F-5357-4C86-BF63-B715624D79A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C719A5F-5357-4C86-BF63-B715624D79A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08995C3F-5475-44A6-9424-D4E50E53AE14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08995C3F-5475-44A6-9424-D4E50E53AE14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08995C3F-5475-44A6-9424-D4E50E53AE14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08995C3F-5475-44A6-9424-D4E50E53AE14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {886A17EF-374A-4C02-86F5-8D8B626339A4}
+	EndGlobalSection
+EndGlobal
