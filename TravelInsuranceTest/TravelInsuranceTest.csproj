@@ -49,7 +49,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsClaim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tstPolicy.cs" />
     <Compile Include="tstClaim.cs" />
