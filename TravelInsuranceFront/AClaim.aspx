@@ -15,17 +15,23 @@
     <form id="form1" runat="server">
         <div>
             Claim Reason:&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="txtClaimReason" type="text" /><br />
-            Claim ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="txtClaimID" type="text" /><br />
+            <asp:TextBox ID="txtClaimReason" runat="server"></asp:TextBox>
+            <br />
+            Claim ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+            <asp:TextBox ID="txtClaimID" runat="server"></asp:TextBox>
+            <br />
             Claim Amount:&nbsp;&nbsp;&nbsp;
-            <input id="txtClaimAmnt" type="text" /><br />
+            <asp:TextBox ID="txtClaimAmnt" runat="server"></asp:TextBox>
+            <br />
             Claim Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="txtClaimStatus" type="text" /><br />
+            <asp:TextBox ID="txtClaimStatus" runat="server"></asp:TextBox>
+            <br />
             Claim Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="txtClaimDate" type="text" /><br />
+            <asp:TextBox ID="txtClaimDate" runat="server"></asp:TextBox>
+            <br />
             Policy ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="txtPolicyID" type="text" /></div>
+            <asp:TextBox ID="txtPolicyID" runat="server"></asp:TextBox>
+            </div>
         <p>
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="OK" />
         </p>
