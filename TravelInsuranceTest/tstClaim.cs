@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using TravelInsuranceClasses;
+
 namespace TravelInsuranceTest
 {
     [TestClass]
@@ -35,7 +37,7 @@ namespace TravelInsuranceTest
         public void ClaimAmntPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Decimal TestData = 1;
+            Decimal TestData = 1.01M;
             AClaim.ClaimAmnt = TestData;
             Assert.AreEqual(AClaim.ClaimAmnt, TestData);
         }
@@ -44,7 +46,7 @@ namespace TravelInsuranceTest
         public void ClaimStatusPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Boolean TestData = false;
+            Boolean TestData = true;
             AClaim.ClaimStatus = TestData;
             Assert.AreEqual(AClaim.ClaimStatus, TestData);
         }
@@ -53,7 +55,7 @@ namespace TravelInsuranceTest
         public void PolicyIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Int32 TestData = 1;
+            Int32 TestData = 12345;
             AClaim.PolicyID = TestData;
             Assert.AreEqual(AClaim.PolicyID, TestData);
         }
@@ -62,7 +64,7 @@ namespace TravelInsuranceTest
         public void ClaimIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Int32 TestData = 1;
+            Int32 TestData = 12345;
             AClaim.ClaimID = TestData;
             Assert.AreEqual(AClaim.ClaimID, TestData);
         }
