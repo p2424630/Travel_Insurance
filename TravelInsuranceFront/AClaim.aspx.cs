@@ -24,6 +24,6 @@ public partial class AClaim : System.Web.UI.Page
         AClaim.ClaimStatus = Boolean.Parse(txtClaimStatus.Text);
         AClaim.PolicyID = Int32.Parse(txtPolicyID.Text);
         Session["AClaim"] = AClaim;
-        Response.Redirect("AddressViewer.aspx");
+        Response.Redirect("ClaimViewer.aspx");
     }
 }
