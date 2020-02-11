@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using TravelInsuranceClasses;
 
 namespace TravelInsuranceTest
@@ -31,16 +31,16 @@ namespace TravelInsuranceTest
         }
 
         [TestMethod]
-        public void PolicyBuyDatePropertyOK()
+        public void StartDatePropertyOK()
         {
             //Instantiate The class
             clsPolicy APolicy = new clsPolicy();
             //test data
             DateTime TestData = DateTime.Now.Date;
             //assign to the property
-            APolicy.PolicyBuyDate = TestData;
+            APolicy.StartDate = TestData;
             //test for equality
-            Assert.AreEqual(APolicy.PolicyBuyDate, TestData);
+            Assert.AreEqual(APolicy.StartDate, TestData);
         }
         [TestMethod]
         public void PolicyIDPropertyOK()
@@ -55,16 +55,16 @@ namespace TravelInsuranceTest
             Assert.AreEqual(APolicy.PolicyID, TestData);
         }
         [TestMethod]
-        public void QuoteIDPropertyOK()
+        public void StaffIDPropertyOK()
         {
             //Instantiate The class
             clsPolicy APolicy = new clsPolicy();
             //test data
             Int32 TestData = 1;
             //assign to the property
-            APolicy.QuoteID = TestData;
+            APolicy.StaffID = TestData;
             //test for equality
-            Assert.AreEqual(APolicy.QuoteID, TestData);
+            Assert.AreEqual(APolicy.StaffID, TestData);
         }
         [TestMethod]
         public void CustomerIDPropertyOK()
@@ -91,6 +91,17 @@ namespace TravelInsuranceTest
             //test for equality
             Assert.AreEqual(APolicy.PolicyDetails, TestData);
         }
-
+        [TestMethod]
+        public void PricePropertyOK()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //test data
+            decimal TestData = 1.11M;
+            //assign to the property
+            APolicy.Price = TestData;
+            //test for equality
+            Assert.AreEqual(APolicy.Price, TestData);
+        }
     }
 }
