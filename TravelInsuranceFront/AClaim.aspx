@@ -13,7 +13,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="width: 20%; height: 50%; float: left">
             Claim Reason:&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtClaimReason" runat="server"></asp:TextBox>
             <br />
