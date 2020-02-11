@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsClaim.cs" />
     <Compile Include="clsDataConnection.cs" />
+    <Compile Include="clsReview.cs" />
     <Compile Include="clsPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
