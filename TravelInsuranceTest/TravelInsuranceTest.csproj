@@ -51,10 +51,22 @@
   <ItemGroup>
     <Compile Include="clsCustomerDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="testCustomerDetails.cs" />
+=======
+    <Compile Include="tstPolicy.cs" />
+    <Compile Include="tstClaim.cs" />
+    <Compile Include="tstReview.cs" />
+>>>>>>> 90007d21f76e53cb38e33e89c012d017d138d1cc
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TravelInsuranceClasses\TravelInsuranceClasses.csproj">
+      <Project>{3C719A5F-5357-4C86-BF63-B715624D79A0}</Project>
+      <Name>TravelInsuranceClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
