@@ -22,7 +22,8 @@ public partial class AClaim : System.Web.UI.Page
         AClaim.ClaimDate = DateTime.Parse(txtClaimDate.Text);
         AClaim.ClaimAmnt = Decimal.Parse(txtClaimAmnt.Text);
         AClaim.ClaimStatus = Boolean.Parse(txtClaimStatus.Text);
-        AClaim.PolicyID = Int32.Parse(txtPolicyID.Text);
+        AClaim.CustomerID = Int32.Parse(txtCustomerID.Text);
+        AClaim.StaffID = Int32.Parse(txtStaffID.Text);
         Session["AClaim"] = AClaim;
         Response.Redirect("ClaimViewer.aspx");
     }

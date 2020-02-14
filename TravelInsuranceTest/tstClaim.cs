@@ -52,12 +52,21 @@ namespace TravelInsuranceTest
         }
 
         [TestMethod]
-        public void PolicyIDPropertyOK()
+        public void CustomerIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
             Int32 TestData = 12345;
-            AClaim.PolicyID = TestData;
-            Assert.AreEqual(AClaim.PolicyID, TestData);
+            AClaim.CustomerID = TestData;
+            Assert.AreEqual(AClaim.CustomerID, TestData);
+        }
+
+        [TestMethod]
+        public void StaffIDPropertyOK()
+        {
+            clsClaim AClaim = new clsClaim();
+            Int32 TestData = 12345;
+            AClaim.StaffID = TestData;
+            Assert.AreEqual(AClaim.StaffID, TestData);
         }
 
         [TestMethod]
