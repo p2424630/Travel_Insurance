@@ -111,7 +111,7 @@ namespace TravelInsuranceTest
             //boolean var to store the result of the validation
             Boolean Found = false;
             //test data
-            Int32 PolicyID = 1;
+            Int32 PolicyID = 7;
             //invoke the method
             Found = APolicy.Find(PolicyID);
             //test for equality
@@ -127,11 +127,11 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume itis)
             Boolean OK = true;
             //test data
-            Int32 PolicyID = 12;
+            Int32 PolicyID = 7;
             //invoke method
             Found = APolicy.Find(PolicyID);
             //check the policy id
-            if (APolicy.PolicyID != 12)
+            if (APolicy.PolicyID != 7)
             {
                 OK = false;
             }
@@ -148,7 +148,7 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume itis)
             Boolean OK = true;
             //test data
-            Int32 PolicyID = 12;
+            Int32 PolicyID = 7;
             //invoke method
             Found = APolicy.Find(PolicyID);
             //check the policy id
@@ -169,7 +169,7 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume itis)
             Boolean OK = true;
             //test data
-            Int32 PolicyID = 12;
+            Int32 PolicyID = 7;
             //invoke method
             Found = APolicy.Find(PolicyID);
             //check the policy id
@@ -190,7 +190,7 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume itis)
             Boolean OK = true;
             //test data
-            Int32 PolicyID = 12;
+            Int32 PolicyID = 7;
             //invoke method
             Found = APolicy.Find(PolicyID);
             //check the policy id
@@ -211,7 +211,7 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume itis)
             Boolean OK = true;
             //test data
-            Int32 PolicyID = 12;
+            Int32 PolicyID = 7;
             //invoke method
             Found = APolicy.Find(PolicyID);
             //check the policy id
@@ -232,7 +232,7 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume itis)
             Boolean OK = true;
             //test data
-            Int32 PolicyID = 12;
+            Int32 PolicyID = 7;
             //invoke method
             Found = APolicy.Find(PolicyID);
             //check the policy id
@@ -253,11 +253,11 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume itis)
             Boolean OK = true;
             //test data
-            Int32 PolicyID = 12;
+            Int32 PolicyID = 7;
             //invoke method
             Found = APolicy.Find(PolicyID);
             //check the policy id
-            if (APolicy.Price != 42.42m)
+            if (APolicy.Price != 42.42M)
             {
                 OK = false;
             }

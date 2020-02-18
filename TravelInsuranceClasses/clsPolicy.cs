@@ -108,16 +108,31 @@ namespace TravelInsuranceClasses
 
         public bool Find(int PolicyID)
         {
-            //set private data to test value
-            mPolicyID = 12;
-            mStartDate = Convert.ToDateTime("18/02/2020");
-            mStaffID = 2;
-            mCustomerID = 3;
-            mPolicyDetails = "This is a test Policy";
-            mPrice = 42.42m;
-            mAccepted = true;
-            //always return true
-            return true;
+            //create instance of data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the PolicyID to search for
+            DB.AddParameter("@PolicyID", PolicyID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblPolicy_FilterByPolicyID");
+            //if one record is found (there should be either one or zero!)
+            if(DB.Count == 1)
+            {
+                //copy the data fro mthe database to the private data fields
+                mAccepted = Convert.ToBoolean(DB.DataTable.Rows[0]["Accepted"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mPolicyID = Convert.ToInt32(DB.DataTable.Rows[0]["PolicyID"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mStartDate = Convert.ToDateTime(DB.DataTable.Rows[0]["StartDate"]);
+                mPolicyDetails = Convert.ToString(DB.DataTable.Rows[0]["PolicyDetails"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                //return that everything is OK
+                return true;
+            }
+            else
+            {
+                //problem
+                return false;
+            }
         }
     }
 }
