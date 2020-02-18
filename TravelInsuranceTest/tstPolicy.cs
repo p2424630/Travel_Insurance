@@ -103,5 +103,166 @@ namespace TravelInsuranceTest
             //test for equality
             Assert.AreEqual(APolicy.Price, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean var to store the result of the validation
+            Boolean Found = false;
+            //test data
+            Int32 PolicyID = 1;
+            //invoke the method
+            Found = APolicy.Find(PolicyID);
+            //test for equality
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestPolicyIDFound()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean car to store the result of search
+            Boolean Found = false;
+            //boolean var to record if data is OK (assume itis)
+            Boolean OK = true;
+            //test data
+            Int32 PolicyID = 12;
+            //invoke method
+            Found = APolicy.Find(PolicyID);
+            //check the policy id
+            if (APolicy.PolicyID != 12)
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStartDateFound()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean car to store the result of search
+            Boolean Found = false;
+            //boolean var to record if data is OK (assume itis)
+            Boolean OK = true;
+            //test data
+            Int32 PolicyID = 12;
+            //invoke method
+            Found = APolicy.Find(PolicyID);
+            //check the policy id
+            if (APolicy.StartDate != Convert.ToDateTime("18/02/2020"))
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStaffIDFound()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean car to store the result of search
+            Boolean Found = false;
+            //boolean var to record if data is OK (assume itis)
+            Boolean OK = true;
+            //test data
+            Int32 PolicyID = 12;
+            //invoke method
+            Found = APolicy.Find(PolicyID);
+            //check the policy id
+            if (APolicy.StaffID != 2)
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean car to store the result of search
+            Boolean Found = false;
+            //boolean var to record if data is OK (assume itis)
+            Boolean OK = true;
+            //test data
+            Int32 PolicyID = 12;
+            //invoke method
+            Found = APolicy.Find(PolicyID);
+            //check the policy id
+            if (APolicy.CustomerID != 3)
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestAcceptedFound()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean car to store the result of search
+            Boolean Found = false;
+            //boolean var to record if data is OK (assume itis)
+            Boolean OK = true;
+            //test data
+            Int32 PolicyID = 12;
+            //invoke method
+            Found = APolicy.Find(PolicyID);
+            //check the policy id
+            if (!APolicy.Accepted)
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPolicyDetailsFound()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean car to store the result of search
+            Boolean Found = false;
+            //boolean var to record if data is OK (assume itis)
+            Boolean OK = true;
+            //test data
+            Int32 PolicyID = 12;
+            //invoke method
+            Found = APolicy.Find(PolicyID);
+            //check the policy id
+            if (APolicy.PolicyDetails != "This is a test Policy")
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            //Instantiate The class
+            clsPolicy APolicy = new clsPolicy();
+            //boolean car to store the result of search
+            Boolean Found = false;
+            //boolean var to record if data is OK (assume itis)
+            Boolean OK = true;
+            //test data
+            Int32 PolicyID = 12;
+            //invoke method
+            Found = APolicy.Find(PolicyID);
+            //check the policy id
+            if (APolicy.Price != 42.42m)
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }

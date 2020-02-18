@@ -57,6 +57,10 @@
     <Compile Include="tstReview.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TravelInsuranceBack\TravelInsuranceBack.csproj">
+      <Project>{76a46adf-23cf-4a04-8967-f357c222e360}</Project>
+      <Name>TravelInsuranceBack</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelInsuranceClasses\TravelInsuranceClasses.csproj">
       <Project>{3C719A5F-5357-4C86-BF63-B715624D79A0}</Project>
       <Name>TravelInsuranceClasses</Name>
