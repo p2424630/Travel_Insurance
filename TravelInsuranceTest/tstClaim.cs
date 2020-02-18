@@ -55,7 +55,7 @@ namespace TravelInsuranceTest
         public void CustomerIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Int32 TestData = 12345;
+            Int32 TestData = 1;
             AClaim.CustomerID = TestData;
             Assert.AreEqual(AClaim.CustomerID, TestData);
         }
@@ -64,7 +64,7 @@ namespace TravelInsuranceTest
         public void StaffIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Int32 TestData = 12345;
+            Int32 TestData = 1;
             AClaim.StaffID = TestData;
             Assert.AreEqual(AClaim.StaffID, TestData);
         }
@@ -73,10 +73,135 @@ namespace TravelInsuranceTest
         public void ClaimIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Int32 TestData = 12345;
+            Int32 TestData = 1;
             AClaim.ClaimID = TestData;
             Assert.AreEqual(AClaim.ClaimID, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestClaimIDNoFound()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            if (AClaim.ClaimID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStaffIDNoFound()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            if (AClaim.StaffID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestCustomerIDNoFound()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            if (AClaim.CustomerID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+
+        [TestMethod]
+        public void TestClaimDateNoFound()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            if (AClaim.ClaimDate != Convert.ToDateTime("01/01/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestClaimAmntNoFound()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            if (AClaim.ClaimAmnt != 1.01M)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestClaimStatusNoFound()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            if (AClaim.ClaimStatus != false)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestClaimReasonNoFound()
+        {
+            clsClaim AClaim = new clsClaim();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ClaimID = 1;
+            Found = AClaim.Find(ClaimID);
+            if (AClaim.ClaimReason != "Medical")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+
 
     }
 }
