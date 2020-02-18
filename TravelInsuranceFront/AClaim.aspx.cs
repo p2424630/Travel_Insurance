@@ -27,4 +27,23 @@ public partial class AClaim : System.Web.UI.Page
         Session["AClaim"] = AClaim;
         Response.Redirect("ClaimViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsClaim AClaim = new clsClaim();
+        Int32 ClaimID;
+        Boolean Found = false;
+        ClaimID = Convert.ToInt32(txtClaimID.Text);
+        Found = AClaim.Find(ClaimID);
+        if (Found)
+        {
+            txtClaimID.Text = Convert.ToString(AClaim.ClaimID);
+            txtCustomerID.Text = Convert.ToString(AClaim.CustomerID);
+            txtStaffID.Text = Convert.ToString(AClaim.StaffID);
+            txtClaimDate.Text = Convert.ToString(AClaim.ClaimDate);
+            txtClaimAmnt.Text = Convert.ToString(AClaim.ClaimAmnt);
+            txtClaimStatus.Text = Convert.ToString(AClaim.ClaimStatus);
+            txtClaimReason.Text = Convert.ToString(AClaim.ClaimReason);
+        }
+    }
 }

@@ -19,6 +19,7 @@
             <br />
             Claim ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
             <asp:TextBox ID="txtClaimID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             Claim Amount:&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtClaimAmnt" runat="server"></asp:TextBox>
