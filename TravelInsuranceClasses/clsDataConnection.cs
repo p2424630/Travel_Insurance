@@ -12,42 +12,36 @@ using System.Data;
 
 namespace TravelInsuranceClasses
 {
-    class clsDataConnection
+    public class clsDataConnection
     {
         //connection object used to connect to the database
         SqlConnection connectionToDB = new SqlConnection();
+
         //data adapter used to transfer data to and from the database
         SqlDataAdapter dataChannel = new SqlDataAdapter();
-        //ado.net class for building the sql commands
+
+        //ado.net class for building the sql commands    
         SqlCommandBuilder commandBuilder = new SqlCommandBuilder();
+
         //stores a list of all of the sql parameters
         List<SqlParameter> SQLParams = new List<SqlParameter>();
+
         //data table used to store the results of the stored procedure
         DataTable dataTable = new DataTable();
+
         //string variable used to store the connection string
         private string connectionString;
 
         public clsDataConnection()
         {
-            GetConString(GetDBName());
+            connectionString = GetConnectionString();
         }
 
-        public clsDataConnection(string DBLocation)
+        private string GetConnectionString()
         {
-            GetConString(DBLocation);
-        }
-
-
-        private string GetConString(string SomePath)
-        {
-            //build up the connection string for the sql server database Visual Studio 2010
-            //connectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=" + GetDBName() + ";Integrated Security=True;User Instance=True";
-            //build up the connection string for the sql server database Visual Studio 2012
-            //connectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + GetDBName() + ";Integrated Security=True;Connect Timeout=30";
-            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + GetDBName() + "\";Integrated Security=True;Connect Timeout=30";
-            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"###\";Integrated Security=True;Connect Timeout=30";
-            connectionString = connectionString.Replace("###", SomePath);
-            return connectionString;
+            System.Net.WebClient client = new System.Net.WebClient();
+            string downloadString = client.DownloadString("http://localhost:5000/");
+            return downloadString;
         }
 
         public string GetDBName()
@@ -78,7 +72,8 @@ namespace TravelInsuranceClasses
                     if (filePaths[PathArrayIndex].Contains("app_data") == true)
                     {
                         //get the list of files in the folder
-                        dirConts = System.IO.Directory.GetFiles(filePaths[PathArrayIndex], "*.mdf", System.IO.SearchOption.AllDirectories);
+                        dirConts = System.IO.Directory.GetFiles(filePaths[PathArrayIndex], "*.mdf",
+                            System.IO.SearchOption.AllDirectories);
                         Counter = 0;
                         //while there are files to process
                         while (Counter < dirConts.Length)
@@ -89,9 +84,11 @@ namespace TravelInsuranceClasses
                                 //add the file to the list of db names
                                 DBNames.Add(dirConts[Counter]);
                             }
+
                             //inc the counter
                             Counter++;
                         }
+
                         if (DBNames.Count == 1)
                         {
                             //flag found
@@ -109,13 +106,14 @@ namespace TravelInsuranceClasses
                         PathArrayIndex++;
                     }
                 }
+
                 if (Found == false)
                 {
                     //move up a path and try again
                     BaseDir = TrimPath(BaseDir);
                 }
-            }
-            while (BaseDir != "" & Found == false);
+            } while (BaseDir != "" & Found == false);
+
             //if one database name is found use that
             if (DBNames.Count == 1)
             {
@@ -148,12 +146,13 @@ namespace TravelInsuranceClasses
             {
                 OldPath = "";
             }
+
             return OldPath;
         }
 
         public void AddParameter(string ParamName, object ParamValue)
-        ///public method allowing the addition of an sql parameter to the list of parameters
-        ///it accepts two parameters the name of the parameter and its value
+            ///public method allowing the addition of an sql parameter to the list of parameters
+            ///it accepts two parameters the name of the parameter and its value
         {
             //create a new instance of the sql parameter object
             SqlParameter AParam = new SqlParameter(ParamName, ParamValue);
@@ -179,6 +178,7 @@ namespace TravelInsuranceClasses
                 //add it to the command builder
                 dataCommand.Parameters.Add(SQLParams[Counter]);
             }
+
             //create an instance of the SqlParameter class
             SqlParameter returnValue = new SqlParameter();
             //set the direction as the return value
@@ -202,7 +202,7 @@ namespace TravelInsuranceClasses
         }
 
         public Int32 Count
-        //property that returns the count of records in the query results
+            //property that returns the count of records in the query results
         {
             get
             {
@@ -212,7 +212,7 @@ namespace TravelInsuranceClasses
         }
 
         public DataTable DataTable
-        //public property that provides access to the query results
+            //public property that provides access to the query results
         {
             get
             {
