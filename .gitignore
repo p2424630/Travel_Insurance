@@ -18,7 +18,7 @@
 x64/
 x86/
 bld/
-##[Bb]in/
+[Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -30,7 +30,6 @@ bld/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-TravelInsuranceClasses.dll
 # NUNIT
 *.VisualState.xml
 TestResult.xml
