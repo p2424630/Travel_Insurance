@@ -50,5 +50,11 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TravelInsuranceBack\TravelInsuranceBack.csproj">
+      <Project>{76a46adf-23cf-4a04-8967-f357c222e360}</Project>
+      <Name>TravelInsuranceBack</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
