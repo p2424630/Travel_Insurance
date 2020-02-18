@@ -13,12 +13,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="width: 20%; height: 50%; float: left">
+        <div>
             Claim Reason:&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtClaimReason" runat="server"></asp:TextBox>
             <br />
             Claim ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
             <asp:TextBox ID="txtClaimID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             Claim Amount:&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtClaimAmnt" runat="server"></asp:TextBox>
@@ -29,12 +30,12 @@
             Claim Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtClaimDate" runat="server"></asp:TextBox>
             <br />
-            Policy ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtPolicyID" runat="server"></asp:TextBox>
+            Staff ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtStaffID" runat="server"></asp:TextBox>
+            <br />
+            Customer ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
             </div>
-        <p>
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="OK" />
-        </p>
     </form>
 </body>
 </html>
