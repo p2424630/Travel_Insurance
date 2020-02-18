@@ -49,7 +49,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsCustomerDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="testCustomerDetails.cs" />
     <Compile Include="tstPolicy.cs" />
@@ -60,8 +59,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TravelInsuranceBack\TravelInsuranceBack.csproj">
+      <Project>{76a46adf-23cf-4a04-8967-f357c222e360}</Project>
+      <Name>TravelInsuranceBack</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelInsuranceClasses\TravelInsuranceClasses.csproj">
-      <Project>{3C719A5F-5357-4C86-BF63-B715624D79A0}</Project>
+      <Project>{3c719a5f-5357-4c86-bf63-b715624d79a0}</Project>
       <Name>TravelInsuranceClasses</Name>
     </ProjectReference>
   </ItemGroup>
