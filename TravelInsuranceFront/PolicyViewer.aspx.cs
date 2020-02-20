@@ -1,17 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using TravelInsuranceClasses;
 
-public partial class PolicyViewer : System.Web.UI.Page
+public partial class PolicyViewer : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsPolicy APolicy = new clsPolicy();
-        APolicy = (clsPolicy)Session["APolicy"];
-        Response.Write(APolicy.PolicyID);
+        var APolicy = new clsPolicy();
+        APolicy = (clsPolicy) Session["APolicy"];
+        Response.Write(APolicy.PolicyID + "<br />");
+        Response.Write(APolicy.StaffID + "<br />");
+        Response.Write(APolicy.CustomerID + "<br />");
+        Response.Write(APolicy.PolicyDetails + "<br />");
+        Response.Write(APolicy.Price + "<br />");
+        Response.Write(APolicy.StartDate + "<br />");
+        Response.Write(APolicy.Accepted + "<br />");
     }
 }

@@ -7,9 +7,9 @@ namespace TravelInsuranceClasses
         //Policy Class private members variables
         private DateTime _mStartDate;
 
-        private int _mPolicyID;
-        private int _mStaffID;
-        private int _mCustomerID;
+        private int _mPolicyId;
+        private int _mStaffId;
+        private int _mCustomerId;
         private string _mPolicyDetails;
         private decimal _mPrice;
         private bool _mAccepted;
@@ -35,25 +35,25 @@ namespace TravelInsuranceClasses
         public int PolicyID
         {
             //sends data out of property
-            get => _mPolicyID;
+            get => _mPolicyId;
             //allows data into the property
-            set => _mPolicyID = value;
+            set => _mPolicyId = value;
         }
 
         public int StaffID
         {
             //sends data out of property
-            get => _mStaffID;
+            get => _mStaffId;
             //allows data into the property
-            set => _mStaffID = value;
+            set => _mStaffId = value;
         }
 
         public int CustomerID
         {
             //sends data out of property
-            get => _mCustomerID;
+            get => _mCustomerId;
             //allows data into the property
-            set => _mCustomerID = value;
+            set => _mCustomerId = value;
         }
 
         public string PolicyDetails
@@ -72,22 +72,22 @@ namespace TravelInsuranceClasses
             set => _mPrice = value;
         }
 
-        public bool Find(int PolicyID)
+        public bool Find(int PolicyId)
         {
             //create instance of data connection
             clsDataConnection DB = new clsDataConnection();
             //add the parameter for the PolicyID to search for
-            DB.AddParameter("@PolicyID", PolicyID);
+            DB.AddParameter("@PolicyId", PolicyId);
             //execute the stored procedure
-            DB.Execute("sproc_tblPolicy_FilterByPolicyID");
+            DB.Execute("sproc_tblPolicy_FilterByPolicyId");
             //if one record is found (there should be either one or zero!)
             if (DB.Count == 1)
             {
                 //copy the data from the database to the private data fields
                 _mAccepted = Convert.ToBoolean(DB.DataTable.Rows[0]["Accepted"]);
-                _mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
-                _mPolicyID = Convert.ToInt32(DB.DataTable.Rows[0]["PolicyID"]);
-                _mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                _mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                _mPolicyId = Convert.ToInt32(DB.DataTable.Rows[0]["PolicyId"]);
+                _mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
                 _mStartDate = Convert.ToDateTime(DB.DataTable.Rows[0]["StartDate"]);
                 _mPolicyDetails = Convert.ToString(DB.DataTable.Rows[0]["PolicyDetails"]);
                 _mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);

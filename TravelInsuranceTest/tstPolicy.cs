@@ -11,113 +11,113 @@ namespace TravelInsuranceTest
         public void InstanceOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test if exists
-            Assert.IsNotNull(APolicy);
+            Assert.IsNotNull(aPolicy);
         }
 
         [TestMethod]
         public void AcceptedPropertyOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test data
-            const bool TestData = true;
+            const bool testData = true;
             //assign the data to propery
-            APolicy.Accepted = TestData;
+            aPolicy.Accepted = testData;
             //test equality
-            Assert.AreEqual(APolicy.Accepted, TestData);
+            Assert.AreEqual(aPolicy.Accepted, testData);
         }
 
         [TestMethod]
         public void StartDatePropertyOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test data
-            DateTime TestData = DateTime.Now.Date;
+            DateTime testData = DateTime.Now.Date;
             //assign to the property
-            APolicy.StartDate = TestData;
+            aPolicy.StartDate = testData;
             //test for equality
-            Assert.AreEqual(APolicy.StartDate, TestData);
+            Assert.AreEqual(aPolicy.StartDate, testData);
         }
 
         [TestMethod]
         public void PolicyIDPropertyOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test data
-            const int TestData = 1;
+            const int testData = 1;
             //assign to the property
-            APolicy.PolicyID = TestData;
+            aPolicy.PolicyID = testData;
             //test for equality
-            Assert.AreEqual(APolicy.PolicyID, TestData);
+            Assert.AreEqual(aPolicy.PolicyID, testData);
         }
 
         [TestMethod]
         public void StaffIDPropertyOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test data
-            const int TestData = 1;
+            const int testData = 1;
             //assign to the property
-            APolicy.StaffID = TestData;
+            aPolicy.StaffID = testData;
             //test for equality
-            Assert.AreEqual(APolicy.StaffID, TestData);
+            Assert.AreEqual(aPolicy.StaffID, testData);
         }
 
         [TestMethod]
         public void CustomerIDPropertyOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test data
-            const int TestData = 1;
+            const int testData = 1;
             //assign to the property
-            APolicy.CustomerID = TestData;
+            aPolicy.CustomerID = testData;
             //test for equality
-            Assert.AreEqual(APolicy.CustomerID, TestData);
+            Assert.AreEqual(aPolicy.CustomerID, testData);
         }
 
         [TestMethod]
         public void PolicyDetailsPropertyOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test data
-            const string TestData = "Some details";
+            const string testData = "Some details";
             //assign to the property
-            APolicy.PolicyDetails = TestData;
+            aPolicy.PolicyDetails = testData;
             //test for equality
-            Assert.AreEqual(APolicy.PolicyDetails, TestData);
+            Assert.AreEqual(aPolicy.PolicyDetails, testData);
         }
 
         [TestMethod]
         public void PricePropertyOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //test data
-            const decimal TestData = 1.11M;
+            const decimal testData = 1.11M;
             //assign to the property
-            APolicy.Price = TestData;
+            aPolicy.Price = testData;
             //test for equality
-            Assert.AreEqual(APolicy.Price, TestData);
+            Assert.AreEqual(aPolicy.Price, testData);
         }
 
         [TestMethod]
         public void FindMethodOK()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean var to store the result of the validation
             bool Found = false;
             //test data
             const int PolicyID = 7;
             //invoke the method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(PolicyID);
             //test for equality
             Assert.IsTrue(Found);
         }
@@ -126,7 +126,7 @@ namespace TravelInsuranceTest
         public void TestPolicyIDFound()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean car to store the result of search
             bool Found = false;
             //boolean var to record if data is OK (assume it is)
@@ -134,9 +134,9 @@ namespace TravelInsuranceTest
             //test data
             const int PolicyID = 7;
             //invoke method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (APolicy.PolicyID != 7)
+            if (aPolicy.PolicyID != 7)
             {
                 OK = false;
             }
@@ -149,7 +149,7 @@ namespace TravelInsuranceTest
         public void TestStartDateFound()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean car to store the result of search
             bool Found = false;
             //boolean var to record if data is OK (assume it is)
@@ -157,9 +157,9 @@ namespace TravelInsuranceTest
             //test data
             const int PolicyID = 7;
             //invoke method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (APolicy.StartDate != Convert.ToDateTime("18/02/2020"))
+            if (aPolicy.StartDate != Convert.ToDateTime("18/02/2020"))
             {
                 OK = false;
             }
@@ -172,7 +172,7 @@ namespace TravelInsuranceTest
         public void TestStaffIDFound()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean car to store the result of search
             bool Found = false;
             //boolean var to record if data is OK (assume it is)
@@ -180,9 +180,9 @@ namespace TravelInsuranceTest
             //test data
             const int PolicyID = 7;
             //invoke method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (APolicy.StaffID != 2)
+            if (aPolicy.StaffID != 4)
             {
                 OK = false;
             }
@@ -195,7 +195,7 @@ namespace TravelInsuranceTest
         public void TestCustomerIDFound()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean car to store the result of search
             bool Found = false;
             //boolean var to record if data is OK (assume it is)
@@ -203,9 +203,9 @@ namespace TravelInsuranceTest
             //test data
             const int PolicyID = 7;
             //invoke method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (APolicy.CustomerID != 3)
+            if (aPolicy.CustomerID != 3)
             {
                 OK = false;
             }
@@ -218,7 +218,7 @@ namespace TravelInsuranceTest
         public void TestAcceptedFound()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean car to store the result of search
             bool Found = false;
             //boolean var to record if data is OK (assume it is)
@@ -226,9 +226,9 @@ namespace TravelInsuranceTest
             //test data
             const int PolicyID = 7;
             //invoke method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (!APolicy.Accepted)
+            if (!aPolicy.Accepted)
             {
                 OK = false;
             }
@@ -241,7 +241,7 @@ namespace TravelInsuranceTest
         public void TestPolicyDetailsFound()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean car to store the result of search
             bool Found = false;
             //boolean var to record if data is OK (assume it is)
@@ -249,9 +249,9 @@ namespace TravelInsuranceTest
             //test data
             const int PolicyID = 7;
             //invoke method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (APolicy.PolicyDetails != "This is a test Policy")
+            if (aPolicy.PolicyDetails != "This is a test Policy")
             {
                 OK = false;
             }
@@ -264,17 +264,17 @@ namespace TravelInsuranceTest
         public void TestPriceFound()
         {
             //Instantiate The class
-            clsPolicy APolicy = new clsPolicy();
+            clsPolicy aPolicy = new clsPolicy();
             //boolean car to store the result of search
             bool Found = false;
             //boolean var to record if data is OK (assume it is)
             bool OK = true;
             //test data
-            const int PolicyID = 7;
+            const int policyId = 7;
             //invoke method
-            Found = APolicy.Find(PolicyID);
+            Found = aPolicy.Find(policyId);
             //check the policy id
-            if (APolicy.Price != 42.42M)
+            if (aPolicy.Price != 42.42M)
             {
                 OK = false;
             }
