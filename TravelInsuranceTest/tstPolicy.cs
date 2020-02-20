@@ -159,7 +159,7 @@ namespace TravelInsuranceTest
             //invoke method
             Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (aPolicy.StartDate != Convert.ToDateTime("18/02/2020"))
+            if (aPolicy.StartDate != Convert.ToDateTime("11/01/2021"))
             {
                 OK = false;
             }
@@ -182,7 +182,7 @@ namespace TravelInsuranceTest
             //invoke method
             Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (aPolicy.StaffID != 4)
+            if (aPolicy.StaffID != 24)
             {
                 OK = false;
             }
@@ -205,7 +205,7 @@ namespace TravelInsuranceTest
             //invoke method
             Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (aPolicy.CustomerID != 3)
+            if (aPolicy.CustomerID != 59)
             {
                 OK = false;
             }
@@ -251,7 +251,7 @@ namespace TravelInsuranceTest
             //invoke method
             Found = aPolicy.Find(PolicyID);
             //check the policy id
-            if (aPolicy.PolicyDetails != "This is a test Policy")
+            if (aPolicy.PolicyDetails != "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.")
             {
                 OK = false;
             }
@@ -274,7 +274,7 @@ namespace TravelInsuranceTest
             //invoke method
             Found = aPolicy.Find(policyId);
             //check the policy id
-            if (aPolicy.Price != 42.42M)
+            if (aPolicy.Price != 99.64M)
             {
                 OK = false;
             }
