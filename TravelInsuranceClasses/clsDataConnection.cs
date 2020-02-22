@@ -40,7 +40,9 @@ namespace TravelInsuranceClasses
         private string GetConnectionString()
         {
             System.Net.WebClient client = new System.Net.WebClient();
-            string downloadString = client.DownloadString("http://localhost:5000/");
+            //string downloadString = client.DownloadString("http://localhost:5000/");
+            var downloadString =
+                "Server=tcp:travelinsurance.database.windows.net,1433;Initial Catalog=Travelinsurance;Persist Security Info=False;User ID=travel_admin;Password=Imat2207;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             return downloadString;
         }
 

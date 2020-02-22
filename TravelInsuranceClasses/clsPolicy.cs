@@ -100,5 +100,20 @@ namespace TravelInsuranceClasses
                 return false;
             }
         }
+        public string Valid(string staffId, string customerId, string policyDetails, string startDate, string price)
+        {
+            string error = "";
+
+            if (!int.TryParse(staffId, out _))
+            {
+                error += "The StaffId was not a valid integer value : ";
+            }
+            else if (staffId.Length == 0)
+            {
+                error += "The StaffId may not be blank : ";
+            }
+
+            return error;
+        }
     }
 }
