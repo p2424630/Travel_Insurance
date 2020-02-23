@@ -12,7 +12,7 @@ namespace TravelInsuranceTest
         private readonly string PolicyDetails = "Lorem ipsum dolor";
         private readonly string Price = "71.36";
         private readonly string StaffId = "3";
-        private readonly string StartDate = "14/11/2020";
+        private readonly string StartDate = DateTime.Now.Date.ToString();
 
         [TestMethod]
         public void InstanceOk()
@@ -273,6 +273,7 @@ namespace TravelInsuranceTest
             Assert.AreEqual(error, "");
         }
 
+        //StaffId Validation
         [TestMethod]
         public void StaffIdNoMinLessOne()
         {
@@ -352,6 +353,399 @@ namespace TravelInsuranceTest
             var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffIdNotInt()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string StaffId = "!3"; //this should be fail
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(error, "");
+        }
+
+        //StartDate Validation
+        [TestMethod]
+        public void StartDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create variable to store the test date data and set it to today
+            var testDate = DateTime.Now.Date;
+            //change the date to -100 years
+            testDate = testDate.AddYears(-100);
+            //convert to string
+            string StartDate = testDate.ToString();
+            //invoke the method
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StartDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsPolicy aPolicy = new clsPolicy();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateMin()
+        {
+            //create an instance of the class we want to create
+            clsPolicy aPolicy = new clsPolicy();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StartDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsPolicy aPolicy = new clsPolicy();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StartDateMax()
+        {
+            //create an instance of the class we want to create
+            clsPolicy aPolicy = new clsPolicy();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddYears(2);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StartDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsPolicy aPolicy = new clsPolicy();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(10);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //CustomerId Validation
+        [TestMethod]
+        public void CustomerIdNoMinLessOne()
+        {
+            var aPolicy = new clsPolicy();
+            const string CustomerId = "";
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMin()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string CustomerId = "1"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string CustomerId = "11"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string CustomerId = "2147483646"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMax()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string CustomerId = "2147483647"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMid()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string CustomerId = "333"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string CustomerId = "2147483648"; //this should be fail
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdNotInt()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string CustomerId = "!3"; //this should be fail
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(error, "");
+        }
+
+        //Price Validation
+        [TestMethod]
+        public void PriceNoMinLessOne()
+        {
+            var aPolicy = new clsPolicy();
+            const string Price = "";
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PriceMin()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "0.01"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "1.01"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "999999.98"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "999999.99"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PriceMid()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "333.33"; //this should be ok
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "1000000.00"; //this should be fail
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PriceNotInt()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "!a"; //this should be fail
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void PriceMoreThan2Decimals()
+        {
+            //create an instance of the class we want to create
+            var aPolicy = new clsPolicy();
+            //create some test data to pass to the method
+            const string Price = "1.001"; //this should be fail
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(error, "");
+        }
+
+        //PolicyDetails Validation
+        [TestMethod]
+        public void PolicyDetailsMax()
+        {
+            var aPolicy = new clsPolicy();
+            string PolicyDetails = "";
+            PolicyDetails = PolicyDetails.PadRight(65535, 'a');
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void PolicyDetailsMaxMinusOne()
+        {
+            var aPolicy = new clsPolicy();
+            string PolicyDetails = "";
+            PolicyDetails = PolicyDetails.PadRight(65534, 'a');
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void PolicyDetailsMaxPlusOne()
+        {
+            var aPolicy = new clsPolicy();
+            string PolicyDetails = "";
+            PolicyDetails = PolicyDetails.PadRight(65536, 'a');
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void PolicyDetailsExtremeMax()
+        {
+            var aPolicy = new clsPolicy();
+            string PolicyDetails = "";
+            PolicyDetails = PolicyDetails.PadRight(1000000, 'a');
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void PolicyDetailsMin()
+        {
+            var aPolicy = new clsPolicy();
+            const string PolicyDetails = "";
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void PolicyDetailsMinPlusOne()
+        {
+            var aPolicy = new clsPolicy();
+            const string PolicyDetails = "a";
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void PolicyDetailsMid()
+        {
+            var aPolicy = new clsPolicy();
+            string PolicyDetails = "";
+            PolicyDetails = PolicyDetails.PadRight(5000, 'a');
+            var error = aPolicy.Valid(StaffId, CustomerId, PolicyDetails, StartDate, Price);
+            Assert.AreEqual(error, "");
         }
     }
 }

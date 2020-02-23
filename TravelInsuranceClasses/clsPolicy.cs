@@ -100,10 +100,12 @@ namespace TravelInsuranceClasses
                 return false;
             }
         }
+
         public string Valid(string staffId, string customerId, string policyDetails, string startDate, string price)
         {
             string error = "";
 
+            //StaffId
             if (!int.TryParse(staffId, out _))
             {
                 error += "The StaffId was not a valid integer value : ";
@@ -113,6 +115,68 @@ namespace TravelInsuranceClasses
                 error += "The StaffId may not be blank : ";
             }
 
+            //StartDate
+            if (!DateTime.TryParse(startDate, out _))
+            {
+                error += "The StartDate was not a valid date : ";
+            }
+            else
+            {
+                var dateTemp = Convert.ToDateTime(startDate);
+                if (dateTemp < DateTime.Now.Date)
+                {
+                    error += "The StartDate cannot be in the past : ";
+                }
+
+                if (dateTemp > DateTime.Now.Date.AddYears(2))
+                {
+                    error += "The StartDate cannot be over 2 years into the future : ";
+                }
+            }
+
+            //CustomerId
+            if (!int.TryParse(customerId, out _))
+            {
+                error += "The CustomerId was not a valid integer value : ";
+            }
+            else if (customerId.Length == 0)
+            {
+                error += "The CustomerId may not be blank : ";
+            }
+
+            //Price
+            if (!decimal.TryParse(price, out _))
+            {
+                error += "The Price was not a valid integer value : ";
+            }
+            else
+            {
+                var priceTemp = Convert.ToDecimal(price);
+
+                if (priceTemp <= 0)
+                {
+                    error += "The Price may not be blank or negative : ";
+
+                }
+
+                if (priceTemp >= 1000000.00M)
+                {
+                    error += "The Price may not be more than 1 million : ";
+                }
+
+                if (priceTemp != decimal.Round(priceTemp, 2, MidpointRounding.AwayFromZero))
+                {
+                    error += "The Price may not have more than 2 decimal points";
+                }
+            }
+
+            //PolicyDetails
+            if (policyDetails.Length > 65535)
+            {
+                error += "The PolicyDetails may not be more than 65535 characters length";
+            }
+
+            //return any errors
             return error;
         }
     }
