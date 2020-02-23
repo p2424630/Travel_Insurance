@@ -10,7 +10,7 @@ div#container {
     margin-right: auto;
     width: 100%;
     max-width: 960px;
-    height: 500px;
+    height: 581px;
 }
 
 div.policy.labels {
@@ -20,11 +20,11 @@ div.policy.labels {
     min-height: 200px;
 }
 div.policy.textbox {
-    width: 36%;
+    width: 57%;
     padding: 25px;
     float: left;
     min-height: 500px;
-    height: 446px;
+    height: 525px;
 }
 
 @media all and (max-width: 480px) {

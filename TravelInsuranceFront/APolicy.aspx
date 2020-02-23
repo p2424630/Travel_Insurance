@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Policy Form</title>
-    <link rel="stylesheet" href="APolicy.css">
+    <link rel="stylesheet" href="APolicy.css"/>
 </head>
 <body>
     <form id="policyForm" runat="server">
@@ -72,6 +72,9 @@
 
                 <br />
                 <asp:CheckBox ID="chkAccepted" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Accepted" TextAlign="Left" />
+                <br />
+                <br />
+                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             </div>
         </div>
     </form>

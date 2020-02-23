@@ -108,46 +108,51 @@ namespace TravelInsuranceClasses
             //StaffId
             if (!int.TryParse(staffId, out _))
             {
-                error += "The StaffId was not a valid integer value : ";
+                error += "The StaffId has not a valid integer value<br />";
             }
             else if (staffId.Length == 0)
             {
-                error += "The StaffId may not be blank : ";
+                error += "The StaffId may not be blank<br />";
             }
 
             //StartDate
             if (!DateTime.TryParse(startDate, out _))
             {
-                error += "The StartDate was not a valid date : ";
+                error += "The StartDate was not a valid date<br />";
             }
             else
             {
                 var dateTemp = Convert.ToDateTime(startDate);
-                if (dateTemp < DateTime.Now.Date)
+                if (startDate.Length ==0)
                 {
-                    error += "The StartDate cannot be in the past : ";
+                    error += "The StartDate cannot be empty<br />";
+                }
+
+                if (dateTemp < DateTime.Now.Date && startDate.Length !=0)
+                {
+                    error += "The StartDate cannot be in the past<br />";
                 }
 
                 if (dateTemp > DateTime.Now.Date.AddYears(2))
                 {
-                    error += "The StartDate cannot be over 2 years into the future : ";
+                    error += "The StartDate cannot be over 2 years into the future<br />";
                 }
             }
 
             //CustomerId
             if (!int.TryParse(customerId, out _))
             {
-                error += "The CustomerId was not a valid integer value : ";
+                error += "The CustomerId was not a valid integer value<br />";
             }
             else if (customerId.Length == 0)
             {
-                error += "The CustomerId may not be blank : ";
+                error += "The CustomerId may not be blank<br />";
             }
 
             //Price
             if (!decimal.TryParse(price, out _))
             {
-                error += "The Price was not a valid integer value : ";
+                error += "The Price was not a valid integer value<br />";
             }
             else
             {
@@ -155,25 +160,24 @@ namespace TravelInsuranceClasses
 
                 if (priceTemp <= 0)
                 {
-                    error += "The Price may not be blank or negative : ";
-
+                    error += "The Price may not be blank or negative<br />";
                 }
 
                 if (priceTemp >= 1000000.00M)
                 {
-                    error += "The Price may not be more than 1 million : ";
+                    error += "The Price may not be more than 1 million<br />";
                 }
 
                 if (priceTemp != decimal.Round(priceTemp, 2, MidpointRounding.AwayFromZero))
                 {
-                    error += "The Price may not have more than 2 decimal points";
+                    error += "The Price may not have more than 2 decimal points<br />";
                 }
             }
 
             //PolicyDetails
             if (policyDetails.Length > 65535)
             {
-                error += "The PolicyDetails may not be more than 65535 characters length";
+                error += "The PolicyDetails may not be more than 65535 characters length<br />";
             }
 
             //return any errors

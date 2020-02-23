@@ -8,22 +8,31 @@ public partial class APolicy : Page
     {
     }
 
-    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
-    {
-    }
-
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        clsPolicy aPolicy = new clsPolicy();
+        var aPolicy = new clsPolicy();
         aPolicy.PolicyID = int.Parse(txtPolicyID.Text);
-        aPolicy.StaffID = int.Parse(txtStaffID.Text);
-        aPolicy.CustomerID = int.Parse(txtCustomerID.Text);
-        aPolicy.Price = decimal.Parse(txtPrice.Text);
-        aPolicy.StartDate = calStartDate.SelectedDate;
-        aPolicy.PolicyDetails = txtPolicyDetails.Text;
-        aPolicy.Accepted = Convert.ToBoolean(chkAccepted.Checked);
-        Session["APolicy"] = aPolicy;
-        Response.Redirect("PolicyViewer.aspx");
+        var staffId = txtStaffID.Text;
+        var customerId = txtCustomerID.Text;
+        var price = txtPrice.Text;
+        var policeDetails = txtPolicyDetails.Text;
+        var startDate = calStartDate.SelectedDate.ToString();
+        var error = aPolicy.Valid(staffId, customerId, policeDetails, startDate, price);
+        if (error == "")
+        {
+            aPolicy.StaffID = int.Parse(txtStaffID.Text);
+            aPolicy.CustomerID = int.Parse(txtCustomerID.Text);
+            aPolicy.Price = decimal.Parse(Convert.ToDecimal(txtPrice.Text).ToString("N2"));
+            aPolicy.StartDate = calStartDate.SelectedDate;
+            aPolicy.PolicyDetails = txtPolicyDetails.Text;
+            aPolicy.Accepted = Convert.ToBoolean(chkAccepted.Checked);
+            Session["APolicy"] = aPolicy;
+            Response.Redirect("PolicyViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = error;
+        }
     }
 
 
@@ -41,5 +50,10 @@ public partial class APolicy : Page
         chkAccepted.Checked = aPolicy.Accepted;
         calStartDate.SelectedDate = aPolicy.StartDate;
         TextBox1.Text = aPolicy.StartDate.ToShortDateString();
+    }
+
+    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+    {
+
     }
 }
