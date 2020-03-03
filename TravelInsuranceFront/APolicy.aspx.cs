@@ -48,8 +48,8 @@ public partial class APolicy : Page
         txtPolicyDetails.Text = aPolicy.PolicyDetails;
         txtPrice.Text = aPolicy.Price.ToString();
         chkAccepted.Checked = aPolicy.Accepted;
+        calStartDate.VisibleDate = aPolicy.StartDate;
         calStartDate.SelectedDate = aPolicy.StartDate;
-        TextBox1.Text = aPolicy.StartDate.ToShortDateString();
     }
 
     protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
