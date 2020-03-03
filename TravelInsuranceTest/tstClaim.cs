@@ -8,6 +8,14 @@ namespace TravelInsuranceTest
     [TestClass]
     public class tstClaim
     {
+        string StaffID = "32";
+        string CustomerID = "41";
+        string ClaimDate = DateTime.Now.Date.ToString();
+        string ClaimAmnt = "77017.16";
+        string ClaimStatus = true.ToString();
+        string ClaimReason = "Lorem";
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -19,7 +27,7 @@ namespace TravelInsuranceTest
         public void ClaimReasonPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            String TestData = "";
+            String TestData = "Lorem";
             AClaim.ClaimReason = TestData;
             Assert.AreEqual(AClaim.ClaimReason, TestData);
         }
@@ -37,7 +45,7 @@ namespace TravelInsuranceTest
         public void ClaimAmntPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Decimal TestData = 1.01M;
+            Decimal TestData = 77017.16M;
             AClaim.ClaimAmnt = TestData;
             Assert.AreEqual(AClaim.ClaimAmnt, TestData);
         }
@@ -55,7 +63,7 @@ namespace TravelInsuranceTest
         public void CustomerIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Int32 TestData = 1;
+            Int32 TestData = 41;
             AClaim.CustomerID = TestData;
             Assert.AreEqual(AClaim.CustomerID, TestData);
         }
@@ -64,7 +72,7 @@ namespace TravelInsuranceTest
         public void StaffIDPropertyOK()
         {
             clsClaim AClaim = new clsClaim();
-            Int32 TestData = 1;
+            Int32 TestData = 32;
             AClaim.StaffID = TestData;
             Assert.AreEqual(AClaim.StaffID, TestData);
         }
@@ -83,7 +91,7 @@ namespace TravelInsuranceTest
         {
             clsClaim AClaim = new clsClaim();
             Boolean Found = false;
-            Int32 ClaimID = 4;
+            Int32 ClaimID = 1;
             Found = AClaim.Find(ClaimID);
             Assert.IsTrue(Found);
         }
@@ -94,9 +102,9 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ClaimID = 4;
+            Int32 ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimID != 4)
+            if (AClaim.ClaimID != 1)
             {
                 OK = false;
             }
@@ -110,9 +118,9 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ClaimID = 4;
+            Int32 ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.StaffID != 1)
+            if (AClaim.StaffID != 32)
             {
                 OK = false;
             }
@@ -126,9 +134,9 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ClaimID = 4;
+            Int32 ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.CustomerID != 1)
+            if (AClaim.CustomerID != 41)
             {
                 OK = false;
             }
@@ -143,9 +151,9 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ClaimID = 4;
+            Int32 ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimDate != Convert.ToDateTime("01/01/2020"))
+            if (AClaim.ClaimDate != Convert.ToDateTime("17/04/2020"))
             {
                 OK = false;
             }
@@ -159,9 +167,9 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ClaimID = 4;
+            Int32 ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimAmnt != 1.01M)
+            if (AClaim.ClaimAmnt != 77017.16M)
             {
                 OK = false;
             }
@@ -175,7 +183,7 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ClaimID = 4;
+            Int32 ClaimID = 1;
             Found = AClaim.Find(ClaimID);
             if (!AClaim.ClaimStatus)
             {
@@ -193,7 +201,7 @@ namespace TravelInsuranceTest
             Boolean OK = true;
             Int32 ClaimID = 4;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimReason != "Medical")
+            if (AClaim.ClaimReason != "Lorem")
             {
                 OK = false;
             }
@@ -201,7 +209,27 @@ namespace TravelInsuranceTest
 
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Assert.AreEqual(Error, "");
 
+        }
+
+
+        [TestMethod]
+        public void ClaimIDMinLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+
+        }
 
     }
 }
