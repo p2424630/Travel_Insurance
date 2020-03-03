@@ -8,23 +8,25 @@ div#container {
     min-height: 500px;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 72%;
     max-width: 960px;
-    height: 500px;
+    height: 590px;
 }
 
 div.policy.labels {
-    width: 16%;
+    width: 11%;
     padding: 25px;
     float: left;
     min-height: 200px;
+    height: 251px;
 }
 div.policy.textbox {
-    width: 36%;
+    width: 65%;
     padding: 25px;
     float: left;
     min-height: 500px;
-    height: 446px;
+    height: 452px;
+    margin-left: 2px;
 }
 
 @media all and (max-width: 480px) {
