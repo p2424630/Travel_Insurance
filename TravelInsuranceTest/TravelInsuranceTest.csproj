@@ -54,6 +54,7 @@
     <Compile Include="tstClaim.cs" />
     <Compile Include="tstPolicy.cs" />
     <Compile Include="tstReview.cs" />
+    <Compile Include="tstStaff.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelInsuranceBack\TravelInsuranceBack.csproj">
