@@ -115,5 +115,23 @@ namespace TravelInsuranceClasses
             else
                 return false;
         }
+
+        public string Valid(string staffID,
+                            string customerID,
+                            string claimDate,
+                            string claimAmnt,
+                            string claimStatus,
+                            string claimReason)
+        {
+            String Error = "";
+
+            if (staffID.Length == 0)
+            {
+                Error += "The StaffID may not be blank : ";
+            }
+            return Error;
+        }
+            
+
     }
 }
