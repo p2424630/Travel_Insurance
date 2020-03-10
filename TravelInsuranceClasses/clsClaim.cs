@@ -118,19 +118,88 @@ namespace TravelInsuranceClasses
             }
         }
 
-        public string Valid(string staffID,
-                            string customerID,
-                            string claimDate,
-                            string claimAmnt,
-                            string claimStatus,
-                            string claimReason)
+        public string Valid(string staffID, string customerID, string claimDate, string claimAmnt, string claimStatus, string claimReason)
         {
-            String Error = "";
+            string Error = "";
 
-            if (staffID.Length == 0)
+            //StaffID
+
+
+            //CustomerID
+            try
             {
-                Error += "The StaffID may not be blank : ";
+                int.Parse(customerID);
+                if (customerID.Length == 0)
+                {
+                    Error += "The CustomerID may not be blank : ";
+                }
             }
+            catch (Exception e1)
+            {
+                Error += "The CustomerID wasn't in the correct format or exceded 2147483648 : " + e1.Message;
+            }
+
+            //ClaimDate
+            try
+            {
+                if (claimDate.Length <= 0)
+                {
+                    Error += "The ClaimDate may not be Blank : ";
+                }
+                else
+                {
+                    DateTime dateTemp = Convert.ToDateTime(claimDate);
+
+                    if (dateTemp > DateTime.Now.Date)
+                    {
+                        Error += "The ClaimDate may not be in the future : ";
+                    }
+
+                    else if (dateTemp < DateTime.Now.Date.AddMonths(-2))
+                    {
+                        Error += "The ClaimDate must be at most 2 Months ago : ";
+                    }
+                }
+            }
+            catch
+            {
+                Error += "The ClaimDate was not valid : ";
+            }
+
+
+            //ClaimAmnt
+
+            try
+            {
+                Decimal claimAmntTemp = Convert.ToDecimal(claimAmnt);
+                if (claimAmntTemp < 0)
+                {
+                    Error += "The ClaimAmnt must not be less than 0 : ";
+                }
+                else if (claimAmntTemp >= 1000000.00M)
+                {
+                    Error += "The ClaimAmnt may not be equal or larger from 1000000.00M : ";
+                }
+
+            }
+            catch (Exception e1)
+            {
+                Error += "The ClaimAmnt was not in the correct format : " + e1.Message;
+            }
+
+
+
+            //ClaimReason
+            if (claimReason.Length <= 0)
+            {
+                Error += "The ClaimReason may not be Blank : ";
+            }
+            else if (claimReason.Length > 65535)
+            {
+                Error += "The ClaimReason may not be above 65535 characters : ";
+            }
+
+
             return Error;
         }
             
