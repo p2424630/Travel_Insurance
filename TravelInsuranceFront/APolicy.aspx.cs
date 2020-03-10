@@ -56,4 +56,9 @@ public partial class APolicy : Page
     {
 
     }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+
+    }
 }
