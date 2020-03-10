@@ -1,0 +1,40 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+#fix {
+    display: flex !important
+}
+
+div#container {
+    min-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 72%;
+    max-width: 960px;
+    height: 590px;
+}
+
+div.customerdetails.labels {
+    width: 20%;
+    padding: 0px;
+    float: left;
+    min-height: 200px;
+    height: 251px;
+}
+
+div.customerdetails.textbox {
+    width: 65%;
+    padding: 0px;
+    float: left;
+    min-height: 500px;
+    height: 452px;
+    margin-left: 5px;
+}
+
+@media all and (max-width: 480px) {
+    div.customerdetails {
+        width: 100%;
+        display: block;
+    }
+}
