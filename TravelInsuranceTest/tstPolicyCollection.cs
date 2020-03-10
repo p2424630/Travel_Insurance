@@ -48,7 +48,7 @@ namespace TravelInsuranceTest
             //instance of class
             clsPolicyCollection AllPolicies = new clsPolicyCollection();
             //test data
-            int SomeCount = 0;
+            int SomeCount = 2;
             //assign the data to property
             AllPolicies.Count = SomeCount;
             Assert.AreEqual(AllPolicies.Count, SomeCount);
@@ -73,6 +73,39 @@ namespace TravelInsuranceTest
             AllPolicies.ThisPolicy = TestPolicy;
             //check if same
             Assert.AreEqual(AllPolicies.ThisPolicy, TestPolicy);
+        }
+
+        [TestMethod]
+        public void ListAndCountOk()
+        {
+            //instance of class
+            clsPolicyCollection AllPolicies = new clsPolicyCollection();
+            //create test data to assign to property as list of objects
+            List<clsPolicy> TestList = new List<clsPolicy>();
+            //add item to list and create the item of the test data
+            clsPolicy TestItem = new clsPolicy();
+            //set properties of test item
+            TestItem.Accepted = true;
+            TestItem.CustomerID = 11;
+            TestItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
+            TestItem.PolicyID = 2;
+            TestItem.Price = 64.00M;
+            TestItem.StaffID = 68;
+            TestItem.StartDate = DateTime.Now.Date;
+            //add the test item to list
+            TestList.Add(TestItem);
+            //assign the data to property
+            AllPolicies.PolicyList = TestList;
+            //test to see if the values are the same
+            Assert.AreEqual(AllPolicies.Count, TestList.Count);
+        }
+        [TestMethod]
+        public void TwoPoliciesPresent()
+        {
+            //instance of class
+            clsPolicyCollection AllPolicies = new clsPolicyCollection();
+            //test if same
+            Assert.AreEqual(AllPolicies.Count, 2);
         }
     }
 }
