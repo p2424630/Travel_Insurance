@@ -1,0 +1,45 @@
+﻿body {
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "Full Name"
+        "Address"
+        "Salary"
+        "Phone Number"
+        "Start Date"
+        "IsValid?";
+        grid-gap: 5px;
+}
+
+.FullName {
+    grid-area: FullName; 
+}
+
+.Address {
+    grid-area: Address;
+}
+
+.Salary {
+    grid-area: Salary;
+}
+
+.PhoneNumber {
+    grid-area: PhoneNumber;
+}
+
+.StartDate {
+    grid-area: StartDate;
+}
+
+.IsValid {
+    grid-area: IsValid;
+}

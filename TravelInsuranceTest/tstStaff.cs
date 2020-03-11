@@ -16,16 +16,24 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void NameOK()
         {
-            clsStaff StaffName = new clsStaff();
+            clsStaff AStaff = new clsStaff();
             string TestData = "";
             AStaff.Name = TestData;
             Assert.AreEqual(AStaff.Name, TestData);
         }
         [TestMethod]
+        public void AddressOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            string TestData = "";
+            AStaff.Address = TestData;
+            Assert.AreEqual(AStaff.Address, TestData);
+        }
+        [TestMethod]
 
         public void SalaryOK()
         {
-            clsStaff Amount = new clsStaff();
+            clsStaff AStaff = new clsStaff();
             Int32 TestData = 1;
             AStaff.Salary = TestData;
             Assert.AreEqual(AStaff.Salary, TestData);
@@ -34,7 +42,7 @@ namespace TravelInsuranceTest
 
         public void PhoneNoOK()
         {
-            clsStaff Phone = new clsStaff();
+            clsStaff AStaff = new clsStaff();
             Int32 TestData = 1;
             AStaff.PhoneNo = TestData;
             Assert.AreEqual(AStaff.PhoneNo, TestData);
@@ -43,7 +51,7 @@ namespace TravelInsuranceTest
 
         public void StartOK()
         {
-            clsStaff StartDate = new clsStaff();
+            clsStaff AStaff = new clsStaff();
             DateTime TestData = DateTime.Now.Date;
             AStaff.Start = TestData;
             Assert.AreEqual(AStaff.Start, TestData);
@@ -52,7 +60,7 @@ namespace TravelInsuranceTest
 
         public void IsValidOK()
         {
-            clsStaff validate = new clsStaff();
+            clsStaff AStaff = new clsStaff();
             Boolean TestData = true;
             AStaff.IsValid = TestData;
             Assert.AreEqual(AStaff.IsValid, TestData);
