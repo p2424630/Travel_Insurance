@@ -34,7 +34,13 @@
             <asp:TextBox ID="txtStaffID" runat="server"></asp:TextBox>
             <br />
             Customer ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+            <br />
+            Error:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+            <br />
+
             </div>
+
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="OK" />
     </form>
 </body>

@@ -17,24 +17,51 @@ public partial class AClaim : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsClaim AClaim = new clsClaim();
-        AClaim.ClaimReason = txtClaimReason.Text;
-        AClaim.ClaimID = Int32.Parse(txtClaimID.Text);
-        AClaim.ClaimDate = DateTime.Parse(txtClaimDate.Text);
-        AClaim.ClaimAmnt = Decimal.Parse(txtClaimAmnt.Text);
-        AClaim.ClaimStatus = Boolean.Parse(txtClaimStatus.Text);
-        AClaim.CustomerID = Int32.Parse(txtCustomerID.Text);
-        AClaim.StaffID = Int32.Parse(txtStaffID.Text);
-        Session["AClaim"] = AClaim;
-        Response.Redirect("ClaimViewer.aspx");
+        string ClaimReason = txtClaimReason.Text;
+        string ClaimDate = txtClaimDate.Text;
+        string ClaimAmnt = txtClaimAmnt.Text;
+        string CustomerID = txtCustomerID.Text;
+        string StaffID = txtStaffID.Text;
+        string error = "";
+        error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+
+        if (error == "")
+        {
+            AClaim.ClaimReason = txtClaimReason.Text;
+            AClaim.ClaimID = Convert.ToInt32(txtClaimID.Text);
+            AClaim.ClaimDate = Convert.ToDateTime(txtClaimDate.Text);
+            AClaim.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+
+            if (txtClaimAmnt.Text != "")
+            {
+                AClaim.ClaimAmnt = Convert.ToDecimal(txtClaimAmnt.Text);
+            }
+
+            if (txtClaimStatus.Text != "")
+            {
+                AClaim.ClaimStatus = Convert.ToBoolean(txtClaimStatus.Text);
+            }
+
+            if (txtStaffID.Text != "")
+            {
+                AClaim.StaffID = Convert.ToInt32(txtStaffID.Text);
+            }
+
+            Session["AClaim"] = AClaim;
+            Response.Redirect("ClaimViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsClaim AClaim = new clsClaim();
-        Int32 ClaimID;
-        Boolean Found = false;
+        int ClaimID;
         ClaimID = Convert.ToInt32(txtClaimID.Text);
-        Found = AClaim.Find(ClaimID);
+        bool Found = AClaim.Find(ClaimID);
         if (Found)
         {
             txtClaimID.Text = Convert.ToString(AClaim.ClaimID);

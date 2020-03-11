@@ -44,8 +44,10 @@
     <Compile Include="clsClaim.cs" />
     <Compile Include="clsCustomerDetails.cs" />
     <Compile Include="clsDataConnection.cs" />
+    <Compile Include="clsPolicyCollection.cs" />
     <Compile Include="clsReview.cs" />
     <Compile Include="clsPolicy.cs" />
+    <Compile Include="clsStaff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
