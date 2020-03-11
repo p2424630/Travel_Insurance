@@ -35,7 +35,6 @@ public partial class APolicy : Page
         }
     }
 
-
     protected void BtnFind_Click(object sender, EventArgs e)
     {
         var aPolicy = new clsPolicy();
@@ -52,13 +51,7 @@ public partial class APolicy : Page
         calStartDate.SelectedDate = aPolicy.StartDate;
     }
 
-    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
     protected void btnClear_Click(object sender, EventArgs e)
     {
-
     }
 }

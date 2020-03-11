@@ -22,11 +22,11 @@
         <asp:TextBox ID="txtReviewTitle" runat="server"></asp:TextBox>
         <br />
         Review Text:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtReviewText" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtReviewText" runat="server"></asp:TextBox>
         <br />
         Date Published:&nbsp;&nbsp;&nbsp; <asp:Calendar ID="calendar" runat="server"></asp:Calendar>
         Is Complaint Recorded?<input id="complaintCheckbox" type="checkbox" /><br />
-        <asp:Button ID="btnOk" runat="server" OnClick="Button1_Click" Text="ok" />
+        <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="ok" />
     </form>
 </body>
 </html>
