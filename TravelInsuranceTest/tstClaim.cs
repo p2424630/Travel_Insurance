@@ -213,19 +213,114 @@ namespace TravelInsuranceTest
         {
             clsClaim AClaim = new clsClaim();
             string Error = "";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
 
         }
 
+        //StaffID Tests
 
+        [TestMethod]
+        public void StaffIDNull()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void StaffIDMinLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "0";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void StaffIDMin()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "1";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMinPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "2";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMaxLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "2147483646";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMax()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "2147483647";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMid()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "250";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMaxPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "2147483648";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDNotNumber()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string StaffID = "a";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        //CustomerID Tests
         [TestMethod]
         public void CustomerIDMinLessOne()
         {
             clsClaim AClaim = new clsClaim();
             string Error = "";
-            string CustomerID = "";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            string CustomerID = "0";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -235,8 +330,8 @@ namespace TravelInsuranceTest
         {
             clsClaim AClaim = new clsClaim();
             string Error = "";
-            string CustomerID = "1"; 
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            string CustomerID = "1";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
 
@@ -246,7 +341,7 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             string Error = "";
             string CustomerID = "2";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
 
@@ -256,7 +351,7 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             string Error = "";
             string CustomerID = "2147483646";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
 
@@ -266,7 +361,7 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             string Error = "";
             string CustomerID = "2147483647";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
 
@@ -276,7 +371,7 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             string Error = "";
             string CustomerID = "250";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
 
@@ -286,10 +381,275 @@ namespace TravelInsuranceTest
             clsClaim AClaim = new clsClaim();
             string Error = "";
             string CustomerID = "2147483648";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimStatus, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDNotNumber()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string CustomerID = "a";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
 
 
+        //ClaimDate Tests
+        [TestMethod]
+        public void ClaimDateMinLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(-1);
+            string ClaimDate = ClaimDateTemp.ToString();
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void ClaimDateMin()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-2);
+            string ClaimDate = ClaimDateTemp.ToString();
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimDateMinPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(1);
+            string ClaimDate = ClaimDateTemp.ToString();
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimDateMaxLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            DateTime ClaimDateTemp = DateTime.Now.Date.AddSeconds(-1);
+            string ClaimDate = ClaimDateTemp.ToString();
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimDateMax()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            DateTime ClaimDateTemp = DateTime.Now.Date;
+            string ClaimDate = ClaimDateTemp.ToString();
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimDateMaxPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            DateTime ClaimDateTemp = DateTime.Now.Date.AddSeconds(1);
+            string ClaimDate = ClaimDateTemp.ToString();
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimDateMid()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-1);
+            string ClaimDate = ClaimDateTemp.ToString();
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimDateNotDate()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string CustomerID = "a";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        //ClaimAmnt Tests
+        [TestMethod]
+        public void ClaimAmntNull()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void ClaimAmntMinLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "-0.01";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void ClaimAmntMin()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "0.00";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimAmntMinPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "0.01";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimAmntMaxLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "999999.98";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimAmntMax()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "999999.99";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimAmntMaxPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "1000000.00";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimAmntMid()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "74020.73";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimAmntNotDecimal()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimAmnt = "a";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        //ClaimReason Tests
+        [TestMethod]
+        public void ClaimReasonMinLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimReason = "";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void ClaimReasonMin()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimReason = "a";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimReasonMinPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimReason = "aa";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimReasonMaxLessOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimReason = new string('Z', 65534);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimReasonMax()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimReason = new string('Z', 65535);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimReasonMaxPlusOne()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimReason = new string('Z', 65536);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClaimReasoMid()
+        {
+            clsClaim AClaim = new clsClaim();
+            string Error = "";
+            string ClaimReason = new string('f', 36552);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Assert.AreEqual(Error, "");
+        }
     }
 }

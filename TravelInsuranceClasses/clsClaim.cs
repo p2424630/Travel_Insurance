@@ -4,96 +4,54 @@ namespace TravelInsuranceClasses
 {
     public class clsClaim
     {
-        private Int32 mClaimID;
-        private Int32 mStaffID;
-        private Int32 mCustomerID;
-        private DateTime mClaimDate;
-        private decimal mClaimAmnt;
-        private bool mClaimStatus;
-        private string mClaimReason;
+        private int _mClaimID;
+        private int _mStaffID;
+        private int _mCustomerID;
+        private DateTime _mClaimDate;
+        private decimal _mClaimAmnt;
+        private bool _mClaimStatus;
+        private string _mClaimReason;
 
-        public Int32 ClaimID
+        public int ClaimID
         {
-            get
-            {
-                return mClaimID;
-            }
-            set
-            {
-                mClaimID = value;
-            }
+            get => _mClaimID;
+            set => _mClaimID = value;
         }
 
-        public Int32 StaffID
+        public int StaffID
         {
-            get
-            {
-                return mStaffID;
-            }
-            set
-            {
-                mStaffID = value;
-            }
+            get => _mStaffID;
+            set => _mStaffID = value;
         }
 
-        public Int32 CustomerID
+        public int CustomerID
         {
-            get
-            {
-                return mCustomerID;
-            }
-            set
-            {
-                mCustomerID = value;
-            }
+            get => _mCustomerID;
+            set => _mCustomerID = value;
         }
 
         public DateTime ClaimDate
         {
-            get
-            {
-                return mClaimDate;
-            }
-            set
-            {
-                mClaimDate = value;
-            }
+            get => _mClaimDate;
+            set => _mClaimDate = value;
         }
 
         public decimal ClaimAmnt
         {
-            get
-            {
-                return mClaimAmnt;
-            }
-            set
-            {
-                mClaimAmnt = value;
-            }
+            get => _mClaimAmnt;
+            set => _mClaimAmnt = value;
         }
 
         public bool ClaimStatus
         {
-            get
-            {
-                return mClaimStatus;
-            }
-            set
-            {
-                mClaimStatus = value;
-            }
+            get => _mClaimStatus;
+            set => _mClaimStatus = value;
         }
 
         public string ClaimReason
         {
-            get
-            {
-                return mClaimReason;
-            }
-            set
-            {
-                mClaimReason = value;
-            }
+            get => _mClaimReason;
+            set => _mClaimReason = value;
         }
 
         public bool Find(int ClaimID)
@@ -103,13 +61,13 @@ namespace TravelInsuranceClasses
             DB.Execute("sproc_tblClaim_FilterByClaimID");
             if (DB.Count == 1)
             {
-                mClaimID = Convert.ToInt32(DB.DataTable.Rows[0]["ClaimID"]);
-                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
-                mClaimDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ClaimDate"]);
-                mClaimAmnt = Convert.ToDecimal(DB.DataTable.Rows[0]["ClaimAmnt"]);
-                mClaimStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["ClaimStatus"]);
-                mClaimReason = Convert.ToString(DB.DataTable.Rows[0]["ClaimReason"]);
+                _mClaimID = Convert.ToInt32(DB.DataTable.Rows[0]["ClaimID"]);
+                _mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                _mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                _mClaimDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ClaimDate"]);
+                _mClaimAmnt = Convert.ToDecimal(DB.DataTable.Rows[0]["ClaimAmnt"]);
+                _mClaimStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["ClaimStatus"]);
+                _mClaimReason = Convert.ToString(DB.DataTable.Rows[0]["ClaimReason"]);
                 return true;
             }
             else
@@ -118,91 +76,74 @@ namespace TravelInsuranceClasses
             }
         }
 
-        public string Valid(string staffID, string customerID, string claimDate, string claimAmnt, string claimStatus, string claimReason)
+        public string Valid(string staffID, string customerID, string claimDate, string claimAmnt, string claimReason)
         {
-            string Error = "";
+            var error = "";
 
             //StaffID
-
+            if (staffID.Length > 0)
+            {
+                try
+                {
+                    var staffIDTemp = Convert.ToInt32(staffID); //Null staffID returns 0
+                    if (staffIDTemp <= 0) error += "The StaffID must be above 0 : ";
+                }
+                catch (Exception e1)
+                {
+                    error += "The StaffID wasn't in the correct format or exceeded 2147483648 : " + e1.Message;
+                }
+            }
 
             //CustomerID
             try
             {
-                int.Parse(customerID);
-                if (customerID.Length == 0)
-                {
-                    Error += "The CustomerID may not be blank : ";
-                }
+                var customerIDTemp = Convert.ToInt32(customerID); //Null customerID returns 0
+                if (customerIDTemp <= 0) error += "The CustomerID must be above 0 : ";
             }
             catch (Exception e1)
             {
-                Error += "The CustomerID wasn't in the correct format or exceded 2147483648 : " + e1.Message;
+                error += "The CustomerID wasn't in the correct format or exceeded 2147483648 : " + e1.Message;
             }
 
             //ClaimDate
             try
             {
-                if (claimDate.Length <= 0)
-                {
-                    Error += "The ClaimDate may not be Blank : ";
-                }
-                else
-                {
-                    DateTime dateTemp = Convert.ToDateTime(claimDate);
-
-                    if (dateTemp > DateTime.Now.Date)
-                    {
-                        Error += "The ClaimDate may not be in the future : ";
-                    }
-
-                    else if (dateTemp < DateTime.Now.Date.AddMonths(-2))
-                    {
-                        Error += "The ClaimDate must be at most 2 Months ago : ";
-                    }
-                }
+                var claimDateTemp = Convert.ToDateTime(claimDate); //Null claimDate returns System.DateTime.MinValue 
+                if (claimDateTemp > DateTime.Now.Date)
+                    error += "The ClaimDate may not be in the future : ";
+                else if (claimDateTemp < DateTime.Now.Date.AddMonths(-2))
+                    error += "The ClaimDate must be at most 2 Months ago : ";
             }
-            catch
+            catch (Exception e1)
             {
-                Error += "The ClaimDate was not valid : ";
+                error += "The ClaimDate was not valid : " + e1.Message;
             }
 
 
             //ClaimAmnt
-
-            try
+            if (claimAmnt.Length > 0)
             {
-                Decimal claimAmntTemp = Convert.ToDecimal(claimAmnt);
-                if (claimAmntTemp < 0)
+                try
                 {
-                    Error += "The ClaimAmnt must not be less than 0 : ";
+                    var claimAmntTemp = Convert.ToDecimal(claimAmnt);
+                    if (claimAmntTemp < 0)
+                        error += "The ClaimAmnt must not be less than 0 : ";
+                    else if (claimAmntTemp >= 1000000.00M)
+                        error += "The ClaimAmnt may not be equal or larger from 1000000.00 : ";
                 }
-                else if (claimAmntTemp >= 1000000.00M)
+                catch (Exception e1)
                 {
-                    Error += "The ClaimAmnt may not be equal or larger from 1000000.00M : ";
+                    error += "The ClaimAmnt was not in the correct format : " + e1.Message;
                 }
-
             }
-            catch (Exception e1)
-            {
-                Error += "The ClaimAmnt was not in the correct format : " + e1.Message;
-            }
-
-
 
             //ClaimReason
             if (claimReason.Length <= 0)
-            {
-                Error += "The ClaimReason may not be Blank : ";
-            }
-            else if (claimReason.Length > 65535)
-            {
-                Error += "The ClaimReason may not be above 65535 characters : ";
-            }
+                error += "The ClaimReason may not be Blank : ";
+            else if (claimReason.Length > 65535) error += "The ClaimReason may not be above 65535 characters : ";
 
 
-            return Error;
+            return error;
         }
-            
-
     }
 }
