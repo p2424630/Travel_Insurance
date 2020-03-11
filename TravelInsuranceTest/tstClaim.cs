@@ -7,26 +7,26 @@ namespace TravelInsuranceTest
     [TestClass]
     public class tstClaim
     {
-        string StaffID = "32";
-        string CustomerID = "41";
-        string ClaimDate = DateTime.Now.Date.ToString();
-        string ClaimAmnt = "77017.16";
-        string ClaimStatus = true.ToString();
-        string ClaimReason = "Lorem";
+        private readonly string ClaimAmnt = "77017.16";
+        private readonly string ClaimDate = DateTime.Now.Date.ToString();
+        private readonly string ClaimReason = "Lorem";
+        private string ClaimStatus = true.ToString();
+        private readonly string CustomerID = "41";
+        private readonly string StaffID = "32";
 
 
         [TestMethod]
         public void InstanceOK()
         {
-            clsClaim AClaim = new clsClaim();
+            var AClaim = new clsClaim();
             Assert.IsNotNull(AClaim);
         }
 
         [TestMethod]
         public void ClaimReasonPropertyOK()
         {
-            clsClaim AClaim = new clsClaim();
-            String TestData = "Lorem";
+            var AClaim = new clsClaim();
+            var TestData = "Lorem";
             AClaim.ClaimReason = TestData;
             Assert.AreEqual(AClaim.ClaimReason, TestData);
         }
@@ -34,8 +34,8 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDatePropertyOK()
         {
-            clsClaim AClaim = new clsClaim();
-            DateTime TestData = DateTime.Now.Date;
+            var AClaim = new clsClaim();
+            var TestData = DateTime.Now.Date;
             AClaim.ClaimDate = TestData;
             Assert.AreEqual(AClaim.ClaimDate, TestData);
         }
@@ -43,8 +43,8 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntPropertyOK()
         {
-            clsClaim AClaim = new clsClaim();
-            Decimal TestData = 77017.16M;
+            var AClaim = new clsClaim();
+            var TestData = 77017.16M;
             AClaim.ClaimAmnt = TestData;
             Assert.AreEqual(AClaim.ClaimAmnt, TestData);
         }
@@ -52,8 +52,8 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimStatusPropertyOK()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean TestData = true;
+            var AClaim = new clsClaim();
+            var TestData = true;
             AClaim.ClaimStatus = TestData;
             Assert.AreEqual(AClaim.ClaimStatus, TestData);
         }
@@ -61,8 +61,8 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDPropertyOK()
         {
-            clsClaim AClaim = new clsClaim();
-            Int32 TestData = 41;
+            var AClaim = new clsClaim();
+            var TestData = 41;
             AClaim.CustomerID = TestData;
             Assert.AreEqual(AClaim.CustomerID, TestData);
         }
@@ -70,8 +70,8 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDPropertyOK()
         {
-            clsClaim AClaim = new clsClaim();
-            Int32 TestData = 32;
+            var AClaim = new clsClaim();
+            var TestData = 32;
             AClaim.StaffID = TestData;
             Assert.AreEqual(AClaim.StaffID, TestData);
         }
@@ -79,8 +79,8 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimIDPropertyOK()
         {
-            clsClaim AClaim = new clsClaim();
-            Int32 TestData = 1;
+            var AClaim = new clsClaim();
+            var TestData = 1;
             AClaim.ClaimID = TestData;
             Assert.AreEqual(AClaim.ClaimID, TestData);
         }
@@ -88,9 +88,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void FindMethodOK()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Int32 ClaimID = 1;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var ClaimID = 1;
             Found = AClaim.Find(ClaimID);
             Assert.IsTrue(Found);
         }
@@ -98,124 +98,95 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void TestClaimIDNoFound()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 ClaimID = 1;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var OK = true;
+            var ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimID != 1)
-            {
-                OK = false;
-            }
+            if (AClaim.ClaimID != 1) OK = false;
             Assert.IsTrue(OK);
-
         }
 
         [TestMethod]
         public void TestStaffIDNoFound()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 ClaimID = 1;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var OK = true;
+            var ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.StaffID != 32)
-            {
-                OK = false;
-            }
+            if (AClaim.StaffID != 32) OK = false;
             Assert.IsTrue(OK);
-
         }
 
         [TestMethod]
         public void TestCustomerIDNoFound()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 ClaimID = 1;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var OK = true;
+            var ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.CustomerID != 41)
-            {
-                OK = false;
-            }
+            if (AClaim.CustomerID != 41) OK = false;
             Assert.IsTrue(OK);
-
         }
 
 
         [TestMethod]
         public void TestClaimDateNoFound()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 ClaimID = 1;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var OK = true;
+            var ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimDate != Convert.ToDateTime("17/04/2020"))
-            {
-                OK = false;
-            }
+            if (AClaim.ClaimDate != Convert.ToDateTime("17/04/2020")) OK = false;
             Assert.IsTrue(OK);
-
         }
 
         [TestMethod]
         public void TestClaimAmntNoFound()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 ClaimID = 1;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var OK = true;
+            var ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimAmnt != 77017.16M)
-            {
-                OK = false;
-            }
+            if (AClaim.ClaimAmnt != 77017.16M) OK = false;
             Assert.IsTrue(OK);
-
         }
 
         [TestMethod]
         public void TestClaimStatusNoFound()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 ClaimID = 1;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var OK = true;
+            var ClaimID = 1;
             Found = AClaim.Find(ClaimID);
-            if (!AClaim.ClaimStatus)
-            {
-                OK = false;
-            }
+            if (!AClaim.ClaimStatus) OK = false;
             Assert.IsTrue(OK);
-
         }
 
         [TestMethod]
         public void TestClaimReasonNoFound()
         {
-            clsClaim AClaim = new clsClaim();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 ClaimID = 4;
+            var AClaim = new clsClaim();
+            var Found = false;
+            var OK = true;
+            var ClaimID = 4;
             Found = AClaim.Find(ClaimID);
-            if (AClaim.ClaimReason != "Lorem")
-            {
-                OK = false;
-            }
+            if (AClaim.ClaimReason != "Lorem") OK = false;
             Assert.IsTrue(OK);
-
         }
 
         [TestMethod]
         public void ValidMethodOK()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
+            var AClaim = new clsClaim();
+            var Error = "";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
-
         }
 
         //StaffID Tests
@@ -223,31 +194,29 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDNull()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
-
         }
 
         [TestMethod]
         public void StaffIDMinLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "0";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "0";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
-
         }
 
         [TestMethod]
         public void StaffIDMin()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "1";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "1";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -255,9 +224,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDMinPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "2";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "2";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -265,9 +234,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDMaxLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "2147483646";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "2147483646";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -275,9 +244,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDMax()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "2147483647";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "2147483647";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -285,9 +254,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDMid()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "250";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "250";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -295,9 +264,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDMaxPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "2147483648";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "2147483648";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -305,9 +274,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void StaffIDNotNumber()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string StaffID = "a";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var StaffID = "a";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -317,20 +286,19 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDMinLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "0";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "0";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
-
         }
 
         [TestMethod]
         public void CustomerIDMin()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "1";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "1";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -338,9 +306,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDMinPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "2";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "2";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -348,9 +316,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDMaxLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "2147483646";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "2147483646";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -358,9 +326,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDMax()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "2147483647";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "2147483647";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -368,9 +336,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDMid()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "250";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "250";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -378,9 +346,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDMaxPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "2147483648";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "2147483648";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -388,9 +356,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void CustomerIDNotNumber()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "a";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "a";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -400,22 +368,21 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDateMinLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(-1);
-            string ClaimDate = ClaimDateTemp.ToString();
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(-1);
+            var ClaimDate = ClaimDateTemp.ToString();
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
-
         }
 
         [TestMethod]
         public void ClaimDateMin()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-2);
-            string ClaimDate = ClaimDateTemp.ToString();
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimDateTemp = DateTime.Now.Date.AddMonths(-2);
+            var ClaimDate = ClaimDateTemp.ToString();
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -423,10 +390,10 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDateMinPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(1);
-            string ClaimDate = ClaimDateTemp.ToString();
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(1);
+            var ClaimDate = ClaimDateTemp.ToString();
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -434,10 +401,10 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDateMaxLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            DateTime ClaimDateTemp = DateTime.Now.Date.AddSeconds(-1);
-            string ClaimDate = ClaimDateTemp.ToString();
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimDateTemp = DateTime.Now.Date.AddSeconds(-1);
+            var ClaimDate = ClaimDateTemp.ToString();
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -445,10 +412,10 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDateMax()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            DateTime ClaimDateTemp = DateTime.Now.Date;
-            string ClaimDate = ClaimDateTemp.ToString();
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimDateTemp = DateTime.Now.Date;
+            var ClaimDate = ClaimDateTemp.ToString();
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -456,10 +423,10 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDateMaxPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            DateTime ClaimDateTemp = DateTime.Now.Date.AddSeconds(1);
-            string ClaimDate = ClaimDateTemp.ToString();
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimDateTemp = DateTime.Now.Date.AddSeconds(1);
+            var ClaimDate = ClaimDateTemp.ToString();
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -467,10 +434,10 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDateMid()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            DateTime ClaimDateTemp = DateTime.Now.Date.AddMonths(-1);
-            string ClaimDate = ClaimDateTemp.ToString();
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimDateTemp = DateTime.Now.Date.AddMonths(-1);
+            var ClaimDate = ClaimDateTemp.ToString();
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -478,9 +445,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimDateNotDate()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string CustomerID = "a";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var CustomerID = "a";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -490,31 +457,29 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntNull()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
-
         }
 
         [TestMethod]
         public void ClaimAmntMinLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "-0.01";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "-0.01";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
-
         }
 
         [TestMethod]
         public void ClaimAmntMin()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "0.00";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "0.00";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -522,9 +487,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntMinPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "0.01";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "0.01";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -532,9 +497,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntMaxLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "999999.98";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "999999.98";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -542,9 +507,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntMax()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "999999.99";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "999999.99";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -552,9 +517,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntMaxPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "1000000.00";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "1000000.00";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -562,9 +527,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntMid()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "74020.73";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "74020.73";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -572,9 +537,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimAmntNotDecimal()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimAmnt = "a";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimAmnt = "a";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -584,20 +549,19 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimReasonMinLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimReason = "";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimReason = "";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
-
         }
 
         [TestMethod]
         public void ClaimReasonMin()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimReason = "a";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimReason = "a";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -605,9 +569,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimReasonMinPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimReason = "aa";
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimReason = "aa";
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -615,9 +579,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimReasonMaxLessOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimReason = new string('Z', 65534);
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimReason = new string('Z', 65534);
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -625,9 +589,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimReasonMax()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimReason = new string('Z', 65535);
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimReason = new string('Z', 65535);
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }
@@ -635,9 +599,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimReasonMaxPlusOne()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimReason = new string('Z', 65536);
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimReason = new string('Z', 65536);
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreNotEqual(Error, "");
         }
@@ -645,9 +609,9 @@ namespace TravelInsuranceTest
         [TestMethod]
         public void ClaimReasoMid()
         {
-            clsClaim AClaim = new clsClaim();
-            string Error = "";
-            string ClaimReason = new string('f', 36552);
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimReason = new string('f', 36552);
             Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
             Assert.AreEqual(Error, "");
         }

@@ -56,7 +56,7 @@ namespace TravelInsuranceClasses
 
         public bool Find(int ClaimID)
         {
-            clsDataConnection DB = new clsDataConnection();
+            var DB = new clsDataConnection();
             DB.AddParameter("@ClaimID", ClaimID);
             DB.Execute("sproc_tblClaim_FilterByClaimID");
             if (DB.Count == 1)
@@ -82,7 +82,6 @@ namespace TravelInsuranceClasses
 
             //StaffID
             if (staffID.Length > 0)
-            {
                 try
                 {
                     var staffIDTemp = Convert.ToInt32(staffID); //Null staffID returns 0
@@ -92,7 +91,6 @@ namespace TravelInsuranceClasses
                 {
                     error += "The StaffID wasn't in the correct format or exceeded 2147483648 : " + e1.Message;
                 }
-            }
 
             //CustomerID
             try
@@ -122,7 +120,6 @@ namespace TravelInsuranceClasses
 
             //ClaimAmnt
             if (claimAmnt.Length > 0)
-            {
                 try
                 {
                     var claimAmntTemp = Convert.ToDecimal(claimAmnt);
@@ -135,7 +132,6 @@ namespace TravelInsuranceClasses
                 {
                     error += "The ClaimAmnt was not in the correct format : " + e1.Message;
                 }
-            }
 
             //ClaimReason
             if (claimReason.Length <= 0)
