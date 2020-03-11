@@ -16,7 +16,7 @@ public partial class Staff : System.Web.UI.Page
     protected void OK_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
-        AStaff.Name = txtName.Text;
+        AStaff.Name = txt_Name.Text;
         Session["AStaff"] = AStaff;
         Response.Redirect("StaffViewer.aspx");
     }
