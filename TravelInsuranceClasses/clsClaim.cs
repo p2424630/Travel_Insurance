@@ -56,7 +56,7 @@ namespace TravelInsuranceClasses
 
         public bool Find(int ClaimID)
         {
-            var DB = new clsDataConnection();
+            clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ClaimID", ClaimID);
             DB.Execute("sproc_tblClaim_FilterByClaimID");
             if (DB.Count == 1)
