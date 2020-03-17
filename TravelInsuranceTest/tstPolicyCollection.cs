@@ -43,18 +43,6 @@ namespace TravelInsuranceTest
         }
 
         [TestMethod]
-        public void CountPolicyOk()
-        {
-            //instance of class
-            clsPolicyCollection AllPolicies = new clsPolicyCollection();
-            //test data
-            int SomeCount = 2;
-            //assign the data to property
-            AllPolicies.Count = SomeCount;
-            Assert.AreEqual(AllPolicies.Count, SomeCount);
-        }
-
-        [TestMethod]
         public void ThisPolicyPropertyOk()
         {
             //instance of class
@@ -98,14 +86,6 @@ namespace TravelInsuranceTest
             AllPolicies.PolicyList = TestList;
             //test to see if the values are the same
             Assert.AreEqual(AllPolicies.Count, TestList.Count);
-        }
-        [TestMethod]
-        public void TwoPoliciesPresent()
-        {
-            //instance of class
-            clsPolicyCollection AllPolicies = new clsPolicyCollection();
-            //test if same
-            Assert.AreEqual(AllPolicies.Count, 2);
         }
     }
 }
