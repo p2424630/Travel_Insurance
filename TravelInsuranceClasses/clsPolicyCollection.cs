@@ -6,7 +6,7 @@ namespace TravelInsuranceClasses
     public class clsPolicyCollection
     {
         //private data member for the list
-        List<clsPolicy> _mPolicyList = new List<clsPolicy>();
+        private List<clsPolicy> _mPolicyList = new List<clsPolicy>();
 
         public clsPolicyCollection()
         {
