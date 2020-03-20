@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsClaim.cs" />
+    <Compile Include="clsClaimCollection.cs" />
     <Compile Include="clsCustomerDetails.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsPolicyCollection.cs" />
