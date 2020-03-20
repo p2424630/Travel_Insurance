@@ -20,7 +20,7 @@ public partial class ClaimList : System.Web.UI.Page
         TravelInsuranceClasses.clsClaimCollection Claims = new TravelInsuranceClasses.clsClaimCollection();
         lstClaimList.DataSource = Claims.ClaimList;
         lstClaimList.DataValueField = "ClaimID";
-        lstClaimList.DataTextField = "ClaimAmnt";
+        lstClaimList.DataTextField = "StaffID";
         lstClaimList.DataBind();
     }
 }

@@ -85,22 +85,22 @@ namespace TravelInsuranceClasses
                 try
                 {
                     var staffIDTemp = Convert.ToInt32(staffID); //Null staffID returns 0
-                    if (staffIDTemp <= 0) error += "The StaffID must be above 0 : ";
+                    if (staffIDTemp <= 0) error += "<br />The StaffID must be above 0";
                 }
                 catch (Exception e1)
                 {
-                    error += "The StaffID wasn't in the correct format or exceeded 2147483648 : " + e1.Message;
+                    error += "<br />The StaffID wasn't in the correct format or exceeded 2147483648<br />Error: " + e1.Message + "<br />";
                 }
 
             //CustomerID
             try
             {
                 var customerIDTemp = Convert.ToInt32(customerID); //Null customerID returns 0
-                if (customerIDTemp <= 0) error += "The CustomerID must be above 0 : ";
+                if (customerIDTemp <= 0) error += "<br />The CustomerID must be above 0";
             }
             catch (Exception e1)
             {
-                error += "The CustomerID wasn't in the correct format or exceeded 2147483648 : " + e1.Message;
+                error += "<br />The CustomerID wasn't in the correct format or exceeded 2147483648<br />Error: " + e1.Message + "<br />";
             }
 
             //ClaimDate
@@ -108,13 +108,13 @@ namespace TravelInsuranceClasses
             {
                 var claimDateTemp = Convert.ToDateTime(claimDate); //Null claimDate returns System.DateTime.MinValue 
                 if (claimDateTemp > DateTime.Now.Date)
-                    error += "The ClaimDate may not be in the future : ";
+                    error += "<br />The ClaimDate may not be in the future";
                 else if (claimDateTemp < DateTime.Now.Date.AddMonths(-2))
-                    error += "The ClaimDate must be at most 2 Months ago : ";
+                    error += "<br />The ClaimDate must be at most 2 Months ago";
             }
             catch (Exception e1)
             {
-                error += "The ClaimDate was not valid : " + e1.Message;
+                error += "<br />The ClaimDate was not valid<br />Error: " + e1.Message + "<br />";
             }
 
 
@@ -124,19 +124,19 @@ namespace TravelInsuranceClasses
                 {
                     var claimAmntTemp = Convert.ToDecimal(claimAmnt);
                     if (claimAmntTemp < 0)
-                        error += "The ClaimAmnt must not be less than 0 : ";
+                        error += "<br />The ClaimAmnt must not be less than 0";
                     else if (claimAmntTemp >= 1000000.00M)
-                        error += "The ClaimAmnt may not be equal or larger from 1000000.00 : ";
+                        error += "<br />The ClaimAmnt may not be equal or larger from 1000000.00";
                 }
                 catch (Exception e1)
                 {
-                    error += "The ClaimAmnt was not in the correct format : " + e1.Message;
+                    error += "<br />The ClaimAmnt was not in the correct format<br />Error: " + e1.Message + "<br />";
                 }
 
             //ClaimReason
             if (claimReason.Length <= 0)
-                error += "The ClaimReason may not be Blank : ";
-            else if (claimReason.Length > 65535) error += "The ClaimReason may not be above 65535 characters : ";
+                error += "<br />The ClaimReason must not be Blank";
+            else if (claimReason.Length > 65535) error += "<br />The ClaimReason may not be above 65535 characters";
 
 
             return error;
