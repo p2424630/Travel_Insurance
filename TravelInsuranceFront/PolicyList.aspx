@@ -15,11 +15,14 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <div style="height: 386px; width: 408px">
+        <div style="height: 362px; width: 408px">
         <asp:ListBox ID="lstPolicyList" runat="server" Height="304px" Width="380px"></asp:ListBox>
             <div style="width: 377px; height: 45px">
                 <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-                <asp:Button ID="btnEdit" runat="server" Text="Edit" />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
+                <br />
+                <asp:Label ID="lblError" runat="server"></asp:Label>
+                <br />
             </div>
         </div>
     </form>

@@ -78,5 +78,15 @@ namespace TravelInsuranceClasses
             //execute the query and return the PK value
             return DB.Execute("sproc_tblPolicy_Insert");
         }
+
+        public void Delete()
+        {
+            //deletes a single record from DB pointed by thisPolicy
+            var DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@PolicyId", _mThisPolicy.PolicyId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblPolicy_Delete");
+        }
     }
 }

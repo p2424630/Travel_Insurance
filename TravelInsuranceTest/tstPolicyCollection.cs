@@ -117,5 +117,37 @@ namespace TravelInsuranceTest
             //test to see if the 2 values are the same
             Assert.AreEqual(allPolicies.ThisPolicy, testItem);
         }
+
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            //instance of class
+            var allPolicies = new clsPolicyCollection();
+            //create an item of test data
+            var testItem = new clsPolicy();
+            //store the PK
+            var primaryKey = 0;
+            //set the properties
+            testItem.Accepted = true;
+            testItem.CustomerId = 111;
+            testItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
+            testItem.PolicyId = 112;
+            testItem.Price = 64.00M;
+            testItem.StaffId = 68;
+            testItem.StartDate = DateTime.Now.Date;
+            //set the ThisPolicy to test data
+            allPolicies.ThisPolicy = testItem;
+            //add record
+            primaryKey = allPolicies.Add();
+            //set the PK of the test data
+            testItem.PolicyId = primaryKey;
+            //find the record
+            allPolicies.ThisPolicy.Find(primaryKey);
+            //delete the record
+            allPolicies.Delete();
+            var found = allPolicies.ThisPolicy.Find(primaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(found);
+        }
     }
 }
