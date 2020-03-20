@@ -57,9 +57,9 @@ namespace TravelInsuranceTest
             //test data
             const int testData = 1;
             //assign to the property
-            aPolicy.PolicyID = testData;
+            aPolicy.PolicyId = testData;
             //test for equality
-            Assert.AreEqual(aPolicy.PolicyID, testData);
+            Assert.AreEqual(aPolicy.PolicyId, testData);
         }
 
         [TestMethod]
@@ -70,9 +70,9 @@ namespace TravelInsuranceTest
             //test data
             const int testData = 1;
             //assign to the property
-            aPolicy.StaffID = testData;
+            aPolicy.StaffId = testData;
             //test for equality
-            Assert.AreEqual(aPolicy.StaffID, testData);
+            Assert.AreEqual(aPolicy.StaffId, testData);
         }
 
         [TestMethod]
@@ -83,9 +83,9 @@ namespace TravelInsuranceTest
             //test data
             const int testData = 1;
             //assign to the property
-            aPolicy.CustomerID = testData;
+            aPolicy.CustomerId = testData;
             //test for equality
-            Assert.AreEqual(aPolicy.CustomerID, testData);
+            Assert.AreEqual(aPolicy.CustomerId, testData);
         }
 
         [TestMethod]
@@ -122,28 +122,28 @@ namespace TravelInsuranceTest
             //Instantiate The class
             var aPolicy = new clsPolicy();
             //test data
-            const int PolicyID = 7;
+            const int PolicyId = 7;
             //boolean var to store the result of the validation
             //invoke the method
-            var Found = aPolicy.Find(PolicyID);
+            var Found = aPolicy.Find(PolicyId);
             //test for equality
             Assert.IsTrue(Found);
         }
 
         [TestMethod]
-        public void TestPolicyIDFound()
+        public void TestPolicyIdFound()
         {
             //Instantiate The class
             var aPolicy = new clsPolicy();
             //boolean var to record if data is OK (assume it is)
             var OK = true;
             //test data
-            const int PolicyID = 7;
+            const int PolicyId = 7;
             //boolean car to store the result of search
             //invoke method
-            _ = aPolicy.Find(PolicyID);
+            _ = aPolicy.Find(PolicyId);
             //check the policy id
-            if (aPolicy.PolicyID != 7) OK = false;
+            if (aPolicy.PolicyId != 7) OK = false;
 
             //test to see the result is correct
             Assert.IsTrue(OK);
@@ -157,10 +157,10 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume it is)
             var OK = true;
             //test data
-            const int PolicyID = 7;
+            const int PolicyId = 7;
             //boolean car to store the result of search
             //invoke method
-            _ = aPolicy.Find(PolicyID);
+            _ = aPolicy.Find(PolicyId);
             //check the policy id
             if (aPolicy.StartDate != Convert.ToDateTime("11/01/2021")) OK = false;
 
@@ -176,12 +176,12 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume it is)
             var OK = true;
             //test data
-            const int PolicyID = 7;
+            const int PolicyId = 7;
             //boolean car to store the result of search
             //invoke method
-            _ = aPolicy.Find(PolicyID);
+            _ = aPolicy.Find(PolicyId);
             //check the policy id
-            if (aPolicy.StaffID != 24) OK = false;
+            if (aPolicy.StaffId != 24) OK = false;
 
             //test to see the result is correct
             Assert.IsTrue(OK);
@@ -195,12 +195,12 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume it is)
             var OK = true;
             //test data
-            const int PolicyID = 7;
+            const int PolicyId = 7;
             //boolean car to store the result of search
             //invoke method
-            _ = aPolicy.Find(PolicyID);
+            _ = aPolicy.Find(PolicyId);
             //check the policy id
-            if (aPolicy.CustomerID != 59) OK = false;
+            if (aPolicy.CustomerId != 59) OK = false;
 
             //test to see the result is correct
             Assert.IsTrue(OK);
@@ -214,10 +214,10 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume it is)
             var OK = true;
             //test data
-            const int PolicyID = 7;
+            const int PolicyId = 7;
             //boolean car to store the result of search
             //invoke method
-            _ = aPolicy.Find(PolicyID);
+            _ = aPolicy.Find(PolicyId);
             //check the policy id
             if (!aPolicy.Accepted) OK = false;
 
@@ -233,10 +233,10 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume it is)
             var OK = true;
             //test data
-            const int PolicyID = 7;
+            const int PolicyId = 7;
             //boolean car to store the result of search
             //invoke method
-            _ = aPolicy.Find(PolicyID);
+            _ = aPolicy.Find(PolicyId);
             //check the policy id
             if (aPolicy.PolicyDetails != "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.") OK = false;
 
@@ -252,10 +252,10 @@ namespace TravelInsuranceTest
             //boolean var to record if data is OK (assume it is)
             var OK = true;
             //test data
-            const int policyId = 7;
+            const int PolicyId = 7;
             //boolean car to store the result of search
             //invoke method
-            _ = aPolicy.Find(policyId);
+            _ = aPolicy.Find(PolicyId);
             //check the policy id
             if (aPolicy.Price != 99.64M) OK = false;
 

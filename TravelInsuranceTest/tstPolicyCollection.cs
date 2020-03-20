@@ -1,91 +1,121 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TravelInsuranceClasses;
-using System.Collections.Generic;
 
 namespace TravelInsuranceTest
 {
     [TestClass]
-    public class tstPolicyCollection
+    public class TstPolicyCollection
     {
         [TestMethod]
         public void InstanceOk()
         {
             //create an instance of the class to test
-            clsPolicyCollection AllPolicies = new clsPolicyCollection();
+            var allPolicies = new clsPolicyCollection();
             //test to see if exists
-            Assert.IsNotNull(AllPolicies);
+            Assert.IsNotNull(allPolicies);
         }
 
         [TestMethod]
         public void PolicyListOk()
         {
             //instance of class
-            clsPolicyCollection AllPolicies = new clsPolicyCollection();
+            var allPolicies = new clsPolicyCollection();
             //create test data to assign to property as list of objects
-            List<clsPolicy> TestList = new List<clsPolicy>();
+            var testList = new List<clsPolicy>();
             //add item to list and create the item of the test data
-            clsPolicy TestItem = new clsPolicy();
+            var testItem = new clsPolicy();
             //set properties of test item
-            TestItem.Accepted = true;
-            TestItem.CustomerID = 11;
-            TestItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
-            TestItem.PolicyID = 2;
-            TestItem.Price = 64.00M;
-            TestItem.StaffID = 68;
-            TestItem.StartDate = DateTime.Now.Date;
+            testItem.Accepted = true;
+            testItem.CustomerId = 11;
+            testItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
+            testItem.PolicyId = 2;
+            testItem.Price = 64.00M;
+            testItem.StaffId = 68;
+            testItem.StartDate = DateTime.Now.Date;
             //add the test item to list
-            TestList.Add(TestItem);
+            testList.Add(testItem);
             //assign the data to property
-            AllPolicies.PolicyList = TestList;
+            allPolicies.PolicyList = testList;
             //test to see if the values are the same
-            Assert.AreEqual(AllPolicies.PolicyList, TestList);
+            Assert.AreEqual(allPolicies.PolicyList, testList);
         }
 
         [TestMethod]
         public void ThisPolicyPropertyOk()
         {
             //instance of class
-            clsPolicyCollection AllPolicies = new clsPolicyCollection();
+            var allPolicies = new clsPolicyCollection();
             //test data
-            clsPolicy TestPolicy = new clsPolicy();
+            var testPolicy = new clsPolicy();
             //set properties of test item
-            TestPolicy.Accepted = true;
-            TestPolicy.CustomerID = 11;
-            TestPolicy.PolicyDetails = "Lorem ipsum dolor sit amet,";
-            TestPolicy.PolicyID = 2;
-            TestPolicy.Price = 64.00M;
-            TestPolicy.StaffID = 68;
-            TestPolicy.StartDate = DateTime.Now.Date;
+            testPolicy.Accepted = true;
+            testPolicy.CustomerId = 11;
+            testPolicy.PolicyDetails = "Lorem ipsum dolor sit amet,";
+            testPolicy.PolicyId = 2;
+            testPolicy.Price = 64.00M;
+            testPolicy.StaffId = 68;
+            testPolicy.StartDate = DateTime.Now.Date;
             //assign data to property
-            AllPolicies.ThisPolicy = TestPolicy;
+            allPolicies.ThisPolicy = testPolicy;
             //check if same
-            Assert.AreEqual(AllPolicies.ThisPolicy, TestPolicy);
+            Assert.AreEqual(allPolicies.ThisPolicy, testPolicy);
         }
 
         [TestMethod]
         public void ListAndCountOk()
         {
             //instance of class
-            clsPolicyCollection AllPolicies = new clsPolicyCollection();
+            var allPolicies = new clsPolicyCollection();
             //create test data to assign to property as list of objects
-            List<clsPolicy> TestList = new List<clsPolicy>();
+            var testList = new List<clsPolicy>();
             //add item to list and create the item of the test data
-            clsPolicy TestItem = new clsPolicy();
+            var testItem = new clsPolicy();
             //set properties of test item
-            TestItem.Accepted = true;
-            TestItem.CustomerID = 11;
-            TestItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
-            TestItem.PolicyID = 2;
-            TestItem.Price = 64.00M;
-            TestItem.StaffID = 68;
-            TestItem.StartDate = DateTime.Now.Date;
+            testItem.Accepted = true;
+            testItem.CustomerId = 11;
+            testItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
+            testItem.PolicyId = 2;
+            testItem.Price = 64.00M;
+            testItem.StaffId = 68;
+            testItem.StartDate = DateTime.Now.Date;
             //add the test item to list
-            TestList.Add(TestItem);
+            testList.Add(testItem);
             //assign the data to property
-            AllPolicies.PolicyList = TestList;
+            allPolicies.PolicyList = testList;
             //test to see if the values are the same
-            Assert.AreEqual(AllPolicies.Count, TestList.Count);
+            Assert.AreEqual(allPolicies.Count, testList.Count);
+        }
+
+        //Add Method
+        [TestMethod]
+        public void AddMethodOk()
+        {
+            //instance of class
+            var allPolicies = new clsPolicyCollection();
+            //create an item of test data
+            var testItem = new clsPolicy();
+            //store the PK
+            var primaryKey = 0;
+            //set the properties
+            testItem.Accepted = true;
+            testItem.CustomerId = 111;
+            testItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
+            testItem.PolicyId = 112;
+            testItem.Price = 64.00M;
+            testItem.StaffId = 68;
+            testItem.StartDate = DateTime.Now.Date;
+            //set the ThisPolicy to test data
+            allPolicies.ThisPolicy = testItem;
+            //add record
+            primaryKey = allPolicies.Add();
+            //set the PK of the test data
+            testItem.PolicyId = primaryKey;
+            //find the record
+            allPolicies.ThisPolicy.Find(primaryKey);
+            //test to see if the 2 values are the same
+            Assert.AreEqual(allPolicies.ThisPolicy, testItem);
         }
     }
 }

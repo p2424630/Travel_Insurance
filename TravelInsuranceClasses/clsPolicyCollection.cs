@@ -7,6 +7,8 @@ namespace TravelInsuranceClasses
     {
         //private data member for the list
         private List<clsPolicy> _mPolicyList = new List<clsPolicy>();
+        //private data member for ThisPolicy
+        private clsPolicy _mThisPolicy = new clsPolicy();
 
         public clsPolicyCollection()
         {
@@ -28,9 +30,9 @@ namespace TravelInsuranceClasses
                 clsPolicy aPolicy = new clsPolicy();
                 //read the fields from the current record
                 aPolicy.Accepted = Convert.ToBoolean(DB.DataTable.Rows[Index]["Accepted"]);
-                aPolicy.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
-                aPolicy.PolicyID = Convert.ToInt32(DB.DataTable.Rows[Index]["PolicyID"]);
-                aPolicy.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
+                aPolicy.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                aPolicy.PolicyId = Convert.ToInt32(DB.DataTable.Rows[Index]["PolicyId"]);
+                aPolicy.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
                 aPolicy.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
                 aPolicy.PolicyDetails = Convert.ToString(DB.DataTable.Rows[Index]["PolicyDetails"]);
                 aPolicy.StartDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["StartDate"]);
@@ -53,6 +55,28 @@ namespace TravelInsuranceClasses
             get => _mPolicyList.Count;
             set { }
         }
-        public clsPolicy ThisPolicy { get; set; }
+
+        public clsPolicy ThisPolicy
+        {
+            get => _mThisPolicy;
+            set => _mThisPolicy = value;
+        }
+
+        public int Add()
+        {
+            //adds new record to DB based on the values of _mThisPolicy
+            //connect to DB
+            var DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffId", _mThisPolicy.StaffId);
+            DB.AddParameter("@CustomerId", _mThisPolicy.CustomerId);
+            DB.AddParameter("@StartDate", _mThisPolicy.StartDate);
+            DB.AddParameter("@PolicyDetails", _mThisPolicy.PolicyDetails);
+            DB.AddParameter("@Accepted", _mThisPolicy.Accepted);
+            DB.AddParameter("@Price", _mThisPolicy.Price);
+
+            //execute the query and return the PK value
+            return DB.Execute("sproc_tblPolicy_Insert");
+        }
     }
 }

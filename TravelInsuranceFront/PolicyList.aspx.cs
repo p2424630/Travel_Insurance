@@ -24,10 +24,17 @@ public partial class PolicyList : System.Web.UI.Page
         //set the datasource to the list of policies
         lstPolicyList.DataSource = Policies.PolicyList;
         //set the name of primary key
-        lstPolicyList.DataValueField = "PolicyID";
+        lstPolicyList.DataValueField = "PolicyId";
         //set the data field to display
-        lstPolicyList.DataTextField = "CustomerID";
+        lstPolicyList.DataTextField = "CustomerId";
         //bind data to the list
         lstPolicyList.DataBind();
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["PolicyId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("APolicy.aspx");
     }
 }

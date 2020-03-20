@@ -29,22 +29,22 @@
             <asp:Label ID="lblStartDate1" runat="server" Text="StartDate: "></asp:Label>
             <br/>
             <br/>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK"/>
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" style="height: 26px"/>
             <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/>
         </div>
 
         <div class="policy textbox">
             <div class="input-group">
-                <asp:TextBox ID="txtPolicyID" runat="server" Height="16px" style="margin-bottom: 0px"></asp:TextBox>
+                <asp:TextBox ID="txtPolicyId" runat="server" Height="16px" style="margin-bottom: 0px"></asp:TextBox>
                 <span class="input-group-btn">
                     <asp:Button ID="BtnFind" runat="server" Height="22px" OnClick="BtnFind_Click" Text="Find" Width="42px"/>
                 </span>
             </div>
             <br/>
-            <asp:TextBox ID="txtStaffID" runat="server" Height="16px"></asp:TextBox>
+            <asp:TextBox ID="txtStaffId" runat="server" Height="16px"></asp:TextBox>
             <br/>
             <br/>
-            <asp:TextBox ID="txtCustomerID" runat="server" Height="16px"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerId" runat="server" Height="16px"></asp:TextBox>
             <br/>
             <br/>
             <asp:Label ID="txtPolicyDetails" runat="server"></asp:Label>
