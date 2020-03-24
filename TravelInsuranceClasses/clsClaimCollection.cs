@@ -6,15 +6,80 @@ namespace TravelInsuranceClasses
     public class clsClaimCollection
     {
         private List<clsClaim> _mClaimList = new List<clsClaim>();
+        private clsClaim _mThisClaim = new clsClaim();
 
         public clsClaimCollection()
         {
-            var index = 0;
-            var recordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblClaim_SelectAll");
-            recordCount = DB.Count;
+            PopulateArray(DB);
+        }
 
+        public List<clsClaim> ClaimList
+        {
+            get => _mClaimList;
+            set => _mClaimList = value;
+        }
+
+        public clsClaim ThisClaim
+        {
+            get => _mThisClaim;
+            set => _mThisClaim = value;
+        }
+
+        public int Count
+        {
+            get => _mClaimList.Count;
+            set { }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", _mThisClaim.CustomerID);
+            DB.AddParameter("@StaffID", _mThisClaim.StaffID);
+            DB.AddParameter("@ClaimReason", _mThisClaim.ClaimReason);
+            DB.AddParameter("@ClaimDate", _mThisClaim.ClaimDate);
+            DB.AddParameter("@ClaimAmnt", _mThisClaim.@ClaimAmnt);
+            DB.AddParameter("@ClaimStatus", _mThisClaim.ClaimStatus);
+
+            return DB.Execute("sproc_tblClaim_Insert");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ClaimID", _mThisClaim.ClaimID);
+            DB.Execute("sproc_tblClaim_Delete");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ClaimID", _mThisClaim.ClaimID);
+            DB.AddParameter("@CustomerID", _mThisClaim.CustomerID);
+            DB.AddParameter("@StaffID", _mThisClaim.StaffID);
+            DB.AddParameter("@ClaimReason", _mThisClaim.ClaimReason);
+            DB.AddParameter("@ClaimDate", _mThisClaim.ClaimDate);
+            DB.AddParameter("@ClaimAmnt", _mThisClaim.@ClaimAmnt);
+            DB.AddParameter("@ClaimStatus", _mThisClaim.ClaimStatus);
+
+            DB.Execute("sproc_tblClaim_Update");
+        }
+
+        public void ReportByClaimReason(string ClaimReason)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ClaimReason", ClaimReason);
+            DB.Execute("sproc_tblClaim_FilterByClaimReason");
+            PopulateArray(DB);
+        }
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            var index = 0;
+            var recordCount = DB.Count;
+            _mClaimList = new List<clsClaim>();
             while (index < recordCount)
             {
                 var AClaim = new clsClaim();
@@ -31,20 +96,6 @@ namespace TravelInsuranceClasses
                 _mClaimList.Add(AClaim);
                 index++;
             }
-        }
-
-        public List<clsClaim> ClaimList
-        {
-            get => _mClaimList;
-            set => _mClaimList = value;
-        }
-
-        public clsClaim ThisClaim { get; set; }
-
-        public int Count
-        {
-            get => _mClaimList.Count;
-            set { }
         }
     }
 }

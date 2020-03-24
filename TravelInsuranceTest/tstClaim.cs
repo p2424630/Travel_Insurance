@@ -185,7 +185,7 @@ namespace TravelInsuranceTest
         {
             var AClaim = new clsClaim();
             var Error = "";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -197,7 +197,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -207,7 +207,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "0";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -217,7 +217,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "1";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -227,7 +227,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "2";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -237,7 +237,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "2147483646";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -247,7 +247,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "2147483647";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -257,7 +257,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "250";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -267,7 +267,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "2147483648";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -277,7 +277,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var StaffID = "a";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -289,7 +289,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "0";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -299,7 +299,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "1";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -309,7 +309,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "2";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -319,7 +319,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "2147483646";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -329,7 +329,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "2147483647";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -339,7 +339,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "250";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -349,7 +349,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "2147483648";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -359,7 +359,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "a";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -372,7 +372,7 @@ namespace TravelInsuranceTest
             var Error = "";
             var ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(-1);
             var ClaimDate = ClaimDateTemp.ToString();
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -383,7 +383,7 @@ namespace TravelInsuranceTest
             var Error = "";
             var ClaimDateTemp = DateTime.Now.Date.AddMonths(-2);
             var ClaimDate = ClaimDateTemp.ToString();
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -394,7 +394,7 @@ namespace TravelInsuranceTest
             var Error = "";
             var ClaimDateTemp = DateTime.Now.Date.AddMonths(-2).AddSeconds(1);
             var ClaimDate = ClaimDateTemp.ToString();
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -405,7 +405,7 @@ namespace TravelInsuranceTest
             var Error = "";
             var ClaimDateTemp = DateTime.Now.Date.AddSeconds(-1);
             var ClaimDate = ClaimDateTemp.ToString();
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -416,7 +416,7 @@ namespace TravelInsuranceTest
             var Error = "";
             var ClaimDateTemp = DateTime.Now.Date;
             var ClaimDate = ClaimDateTemp.ToString();
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -427,7 +427,7 @@ namespace TravelInsuranceTest
             var Error = "";
             var ClaimDateTemp = DateTime.Now.Date.AddSeconds(1);
             var ClaimDate = ClaimDateTemp.ToString();
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -438,7 +438,7 @@ namespace TravelInsuranceTest
             var Error = "";
             var ClaimDateTemp = DateTime.Now.Date.AddMonths(-1);
             var ClaimDate = ClaimDateTemp.ToString();
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -448,7 +448,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var CustomerID = "a";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -460,7 +460,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -470,7 +470,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "-0.01";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -480,7 +480,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "0.00";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -490,7 +490,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "0.01";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -500,7 +500,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "999999.98";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -510,7 +510,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "999999.99";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -520,7 +520,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "1000000.00";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -530,7 +530,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "74020.73";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -540,7 +540,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimAmnt = "a";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -552,7 +552,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimReason = "";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -562,7 +562,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimReason = "a";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -572,7 +572,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimReason = "aa";
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -582,7 +582,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimReason = new string('Z', 65534);
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -592,7 +592,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimReason = new string('Z', 65535);
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -602,7 +602,7 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimReason = new string('Z', 65536);
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -612,8 +612,19 @@ namespace TravelInsuranceTest
             var AClaim = new clsClaim();
             var Error = "";
             var ClaimReason = new string('f', 36552);
-            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
             Assert.AreEqual(Error, "");
+        }
+
+        //ClaimSatus Test
+        [TestMethod]
+        public void ClaimStatusNotBoolean()
+        {
+            var AClaim = new clsClaim();
+            var Error = "";
+            var ClaimStatus = "1";
+            Error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
+            Assert.AreNotEqual(Error, "");
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Claims;
+using System.IdentityModel.Metadata;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,10 +10,19 @@ using TravelInsuranceClasses;
 
 public partial class AClaim : System.Web.UI.Page
 {
+    private int ClaimID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         clsClaim AClaim = new clsClaim();
-
+        ClaimID = Convert.ToInt32(Session["ClaimID"]);
+        if (!IsPostBack)
+        {
+            if (ClaimID != -1)
+            {
+                DisplayClaim();
+            }
+        }
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -22,33 +33,35 @@ public partial class AClaim : System.Web.UI.Page
         string ClaimAmnt = txtClaimAmnt.Text;
         string CustomerID = txtCustomerID.Text;
         string StaffID = txtStaffID.Text;
+        string ClaimStatus = txtClaimStatus.Text;
         string error = "";
-        error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason);
+        error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
 
         if (error == "")
         {
-            AClaim.ClaimReason = txtClaimReason.Text;
-            AClaim.ClaimID = Convert.ToInt32(txtClaimID.Text);
-            AClaim.ClaimDate = Convert.ToDateTime(txtClaimDate.Text);
-            AClaim.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            AClaim.ClaimID = ClaimID;
+            AClaim.ClaimReason = ClaimReason;
+            AClaim.ClaimDate = Convert.ToDateTime(ClaimDate);
+            AClaim.CustomerID = Convert.ToInt32(CustomerID);
+            if (ClaimAmnt != "") AClaim.ClaimAmnt = Convert.ToDecimal(ClaimAmnt);
+            if (ClaimStatus != "") AClaim.ClaimStatus = Convert.ToBoolean(ClaimStatus);
+            if (StaffID != "") AClaim.StaffID = Convert.ToInt32(StaffID);
 
-            if (txtClaimAmnt.Text != "")
+            clsClaimCollection ClaimList = new clsClaimCollection();
+
+            if (ClaimID == -1)
             {
-                AClaim.ClaimAmnt = Convert.ToDecimal(txtClaimAmnt.Text);
+                ClaimList.ThisClaim = AClaim;
+                ClaimList.Add();
+            }
+            else
+            {
+                ClaimList.ThisClaim.Find(ClaimID);
+                ClaimList.ThisClaim = AClaim;
+                ClaimList.Update();
             }
 
-            if (txtClaimStatus.Text != "")
-            {
-                AClaim.ClaimStatus = Convert.ToBoolean(txtClaimStatus.Text);
-            }
-
-            if (txtStaffID.Text != "")
-            {
-                AClaim.StaffID = Convert.ToInt32(txtStaffID.Text);
-            }
-
-            Session["AClaim"] = AClaim;
-            Response.Redirect("ClaimViewer.aspx");
+            Response.Redirect("ClaimList.aspx");
         }
         else
         {
@@ -72,5 +85,18 @@ public partial class AClaim : System.Web.UI.Page
             txtClaimStatus.Text = Convert.ToString(AClaim.ClaimStatus);
             txtClaimReason.Text = Convert.ToString(AClaim.ClaimReason);
         }
+    }
+
+    protected void DisplayClaim()
+    {
+        clsClaimCollection ClaimList = new clsClaimCollection();
+        ClaimList.ThisClaim.Find(ClaimID);
+        txtClaimID.Text = Convert.ToString(ClaimList.ThisClaim.ClaimID);
+        txtCustomerID.Text = Convert.ToString(ClaimList.ThisClaim.CustomerID);
+        txtStaffID.Text = Convert.ToString(ClaimList.ThisClaim.StaffID);
+        txtClaimDate.Text = Convert.ToString(ClaimList.ThisClaim.ClaimDate);
+        txtClaimAmnt.Text = Convert.ToString(ClaimList.ThisClaim.ClaimAmnt);
+        txtClaimStatus.Text = Convert.ToString(ClaimList.ThisClaim.ClaimStatus);
+        txtClaimReason.Text = Convert.ToString(ClaimList.ThisClaim.ClaimReason);
     }
 }

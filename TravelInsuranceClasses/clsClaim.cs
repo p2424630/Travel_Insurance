@@ -76,7 +76,7 @@ namespace TravelInsuranceClasses
             }
         }
 
-        public string Valid(string staffID, string customerID, string claimDate, string claimAmnt, string claimReason)
+        public string Valid(string staffID, string customerID, string claimDate, string claimAmnt, string claimReason, string claimStatus)
         {
             var error = "";
 
@@ -131,6 +131,18 @@ namespace TravelInsuranceClasses
                 catch (Exception e1)
                 {
                     error += "<br />The ClaimAmnt was not in the correct format<br />Error: " + e1.Message + "<br />";
+                }
+
+
+            //ClaimStatus
+            if (claimStatus.Length > 0)
+                try
+                {
+                    var claimStatusTemp = Convert.ToBoolean(claimStatus);
+                }
+                catch (Exception e1)
+                {
+                    error += "<br />The ClaimStatus was not in the correct format<br />Error: " + e1.Message + "<br />";
                 }
 
             //ClaimReason
