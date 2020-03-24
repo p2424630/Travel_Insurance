@@ -40,9 +40,9 @@ public partial class AClaim : Page
             AClaim.ClaimReason = ClaimReason;
             AClaim.ClaimDate = Convert.ToDateTime(ClaimDate);
             AClaim.CustomerID = Convert.ToInt32(CustomerID);
-            if (ClaimAmnt != "") AClaim.ClaimAmnt = Convert.ToDecimal(ClaimAmnt);
-            if (ClaimStatus != "") AClaim.ClaimStatus = Convert.ToBoolean(ClaimStatus);
-            if (StaffID != "") AClaim.StaffID = Convert.ToInt32(StaffID);
+            AClaim.ClaimAmnt = Convert.ToDecimal(ClaimAmnt);
+            AClaim.ClaimStatus = Convert.ToBoolean(ClaimStatus);
+            AClaim.StaffID = Convert.ToInt32(StaffID);
 
             var ClaimList = new clsClaimCollection();
 
