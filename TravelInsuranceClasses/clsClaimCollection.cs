@@ -10,7 +10,7 @@ namespace TravelInsuranceClasses
 
         public clsClaimCollection()
         {
-            clsDataConnection DB = new clsDataConnection();
+            var DB = new clsDataConnection();
             DB.Execute("sproc_tblClaim_SelectAll");
             PopulateArray(DB);
         }
@@ -35,7 +35,7 @@ namespace TravelInsuranceClasses
 
         public int Add()
         {
-            clsDataConnection DB = new clsDataConnection();
+            var DB = new clsDataConnection();
             DB.AddParameter("@CustomerID", _mThisClaim.CustomerID);
             DB.AddParameter("@StaffID", _mThisClaim.StaffID);
             DB.AddParameter("@ClaimReason", _mThisClaim.ClaimReason);
@@ -48,14 +48,14 @@ namespace TravelInsuranceClasses
 
         public void Delete()
         {
-            clsDataConnection DB = new clsDataConnection();
+            var DB = new clsDataConnection();
             DB.AddParameter("@ClaimID", _mThisClaim.ClaimID);
             DB.Execute("sproc_tblClaim_Delete");
         }
 
         public void Update()
         {
-            clsDataConnection DB = new clsDataConnection();
+            var DB = new clsDataConnection();
             DB.AddParameter("@ClaimID", _mThisClaim.ClaimID);
             DB.AddParameter("@CustomerID", _mThisClaim.CustomerID);
             DB.AddParameter("@StaffID", _mThisClaim.StaffID);
@@ -69,7 +69,7 @@ namespace TravelInsuranceClasses
 
         public void ReportByClaimReason(string ClaimReason)
         {
-            clsDataConnection DB = new clsDataConnection();
+            var DB = new clsDataConnection();
             DB.AddParameter("@ClaimReason", ClaimReason);
             DB.Execute("sproc_tblClaim_FilterByClaimReason");
             PopulateArray(DB);
@@ -87,12 +87,9 @@ namespace TravelInsuranceClasses
                 AClaim.CustomerID = Convert.ToInt32(DB.DataTable.Rows[index]["CustomerID"]);
                 AClaim.ClaimDate = Convert.ToDateTime(DB.DataTable.Rows[index]["ClaimDate"]);
                 AClaim.ClaimReason = Convert.ToString(DB.DataTable.Rows[index]["ClaimReason"]);
-                if (Convert.ToString(DB.DataTable.Rows[index]["ClaimAmnt"]).Length > 0)
-                    AClaim.ClaimAmnt = Convert.ToDecimal(DB.DataTable.Rows[index]["ClaimAmnt"]);
-                if (Convert.ToString(DB.DataTable.Rows[index]["ClaimStatus"]).Length > 0)
-                    AClaim.ClaimStatus = Convert.ToBoolean(DB.DataTable.Rows[index]["ClaimStatus"]);
-                if (Convert.ToString(DB.DataTable.Rows[index]["StaffID"]).Length > 0)
-                    AClaim.StaffID = Convert.ToInt32(DB.DataTable.Rows[index]["StaffID"]);
+                AClaim.ClaimAmnt = Convert.ToDecimal(DB.DataTable.Rows[index]["ClaimAmnt"]);
+                AClaim.ClaimStatus = Convert.ToBoolean(DB.DataTable.Rows[index]["ClaimStatus"]);
+                AClaim.StaffID = Convert.ToInt32(DB.DataTable.Rows[index]["StaffID"]);
                 _mClaimList.Add(AClaim);
                 index++;
             }

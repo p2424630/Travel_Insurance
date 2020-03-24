@@ -163,11 +163,11 @@ namespace TravelInsuranceTest
         {
             clsClaimCollection FilteredClaims = new clsClaimCollection();
             Boolean OK = true;
-            FilteredClaims.ReportByClaimReason("Aenean eget metus. In");
+            FilteredClaims.ReportByClaimReason("sem. Pellentesque ut ipsum");
             if (FilteredClaims.Count == 2)
             {
-                if (FilteredClaims.ClaimList[0].ClaimID != 3) OK = false;
-                if (FilteredClaims.ClaimList[1].ClaimID != 36) OK = false;
+                if (FilteredClaims.ClaimList[0].ClaimID != 2) OK = false;
+                if (FilteredClaims.ClaimList[1].ClaimID != 11) OK = false;
             }
             else
             {

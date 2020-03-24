@@ -11,6 +11,7 @@ using TravelInsuranceClasses;
 public partial class AClaim : System.Web.UI.Page
 {
     private int ClaimID;
+    private int ClaimIDTemp;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -73,17 +74,23 @@ public partial class AClaim : System.Web.UI.Page
     {
         clsClaim AClaim = new clsClaim();
         int ClaimID;
-        ClaimID = Convert.ToInt32(txtClaimID.Text);
-        bool Found = AClaim.Find(ClaimID);
-        if (Found)
+        if (!int.TryParse(txtClaimID.Text, out ClaimIDTemp))
+            lblError.Text = "<br />ClaimID is not an Integer<br />";
+        else
         {
-            txtClaimID.Text = Convert.ToString(AClaim.ClaimID);
-            txtCustomerID.Text = Convert.ToString(AClaim.CustomerID);
-            txtStaffID.Text = Convert.ToString(AClaim.StaffID);
-            txtClaimDate.Text = Convert.ToString(AClaim.ClaimDate);
-            txtClaimAmnt.Text = Convert.ToString(AClaim.ClaimAmnt);
-            txtClaimStatus.Text = Convert.ToString(AClaim.ClaimStatus);
-            txtClaimReason.Text = Convert.ToString(AClaim.ClaimReason);
+            lblError.Text = "";
+            ClaimID = ClaimIDTemp;
+            bool Found = AClaim.Find(ClaimID);
+            if (Found)
+            {
+                txtClaimID.Text = Convert.ToString(AClaim.ClaimID);
+                txtCustomerID.Text = Convert.ToString(AClaim.CustomerID);
+                txtStaffID.Text = Convert.ToString(AClaim.StaffID);
+                txtClaimDate.Text = Convert.ToString(AClaim.ClaimDate);
+                txtClaimAmnt.Text = Convert.ToString(AClaim.ClaimAmnt);
+                txtClaimStatus.Text = Convert.ToString(AClaim.ClaimStatus);
+                txtClaimReason.Text = Convert.ToString(AClaim.ClaimReason);
+            }
         }
     }
 
