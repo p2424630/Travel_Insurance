@@ -6,19 +6,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelInsuranceClasses;
 
-public partial class ClaimList : System.Web.UI.Page
+public partial class ClaimList : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack == false)
-        {
-            DisplayClaims();
-        }
+        if (IsPostBack == false) DisplayClaims();
     }
 
     private void DisplayClaims()
     {
-        TravelInsuranceClasses.clsClaimCollection Claims = new TravelInsuranceClasses.clsClaimCollection();
+        var Claims = new clsClaimCollection();
         lstClaimList.DataSource = Claims.ClaimList;
         lstClaimList.DataValueField = "ClaimID";
         lstClaimList.DataTextField = "ClaimReason";
@@ -63,7 +60,7 @@ public partial class ClaimList : System.Web.UI.Page
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
-        clsClaimCollection Claims = new clsClaimCollection();
+        var Claims = new clsClaimCollection();
         Claims.ReportByClaimReason("");
         txtClaimReason.Text = "";
         lstClaimList.DataSource = Claims.ClaimList;
@@ -74,12 +71,11 @@ public partial class ClaimList : System.Web.UI.Page
 
     protected void btnApply_Click(object sender, EventArgs e)
     {
-        clsClaimCollection Claims = new clsClaimCollection();
+        var Claims = new clsClaimCollection();
         Claims.ReportByClaimReason(txtClaimReason.Text);
         lstClaimList.DataSource = Claims.ClaimList;
         lstClaimList.DataValueField = "ClaimID";
         lstClaimList.DataTextField = "ClaimReason";
         lstClaimList.DataBind();
     }
-
 }

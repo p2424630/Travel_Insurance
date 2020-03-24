@@ -8,34 +8,30 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelInsuranceClasses;
 
-public partial class AClaim : System.Web.UI.Page
+public partial class AClaim : Page
 {
     private int ClaimID;
     private int ClaimIDTemp;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsClaim AClaim = new clsClaim();
+        var AClaim = new clsClaim();
         ClaimID = Convert.ToInt32(Session["ClaimID"]);
         if (!IsPostBack)
-        {
             if (ClaimID != -1)
-            {
                 DisplayClaim();
-            }
-        }
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
-        clsClaim AClaim = new clsClaim();
-        string ClaimReason = txtClaimReason.Text;
-        string ClaimDate = txtClaimDate.Text;
-        string ClaimAmnt = txtClaimAmnt.Text;
-        string CustomerID = txtCustomerID.Text;
-        string StaffID = txtStaffID.Text;
-        string ClaimStatus = txtClaimStatus.Text;
-        string error = "";
+        var AClaim = new clsClaim();
+        var ClaimReason = txtClaimReason.Text;
+        var ClaimDate = txtClaimDate.Text;
+        var ClaimAmnt = txtClaimAmnt.Text;
+        var CustomerID = txtCustomerID.Text;
+        var StaffID = txtStaffID.Text;
+        var ClaimStatus = txtClaimStatus.Text;
+        var error = "";
         error = AClaim.Valid(StaffID, CustomerID, ClaimDate, ClaimAmnt, ClaimReason, ClaimStatus);
 
         if (error == "")
@@ -48,7 +44,7 @@ public partial class AClaim : System.Web.UI.Page
             if (ClaimStatus != "") AClaim.ClaimStatus = Convert.ToBoolean(ClaimStatus);
             if (StaffID != "") AClaim.StaffID = Convert.ToInt32(StaffID);
 
-            clsClaimCollection ClaimList = new clsClaimCollection();
+            var ClaimList = new clsClaimCollection();
 
             if (ClaimID == -1)
             {
@@ -72,15 +68,17 @@ public partial class AClaim : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        clsClaim AClaim = new clsClaim();
+        var AClaim = new clsClaim();
         int ClaimID;
         if (!int.TryParse(txtClaimID.Text, out ClaimIDTemp))
+        {
             lblError.Text = "<br />ClaimID is not an Integer<br />";
+        }
         else
         {
             lblError.Text = "";
             ClaimID = ClaimIDTemp;
-            bool Found = AClaim.Find(ClaimID);
+            var Found = AClaim.Find(ClaimID);
             if (Found)
             {
                 txtClaimID.Text = Convert.ToString(AClaim.ClaimID);
@@ -96,7 +94,7 @@ public partial class AClaim : System.Web.UI.Page
 
     protected void DisplayClaim()
     {
-        clsClaimCollection ClaimList = new clsClaimCollection();
+        var ClaimList = new clsClaimCollection();
         ClaimList.ThisClaim.Find(ClaimID);
         txtClaimID.Text = Convert.ToString(ClaimList.ThisClaim.ClaimID);
         txtCustomerID.Text = Convert.ToString(ClaimList.ThisClaim.CustomerID);

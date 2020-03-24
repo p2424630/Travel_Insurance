@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelInsuranceClasses;
 
-public partial class DeleteClaim : System.Web.UI.Page
+public partial class DeleteClaim : Page
 {
     private int ClaimID;
 
@@ -18,7 +18,7 @@ public partial class DeleteClaim : System.Web.UI.Page
 
     protected void btnYes_Click(object sender, EventArgs e)
     {
-        clsClaimCollection ClaimList = new clsClaimCollection();
+        var ClaimList = new clsClaimCollection();
         ClaimList.ThisClaim.Find(ClaimID);
         ClaimList.Delete();
         Response.Redirect("ClaimList.aspx");
