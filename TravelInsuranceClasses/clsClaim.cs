@@ -56,18 +56,19 @@ namespace TravelInsuranceClasses
 
         public bool Find(int ClaimID)
         {
-            clsDataConnection DB = new clsDataConnection();
+            var DB = new clsDataConnection();
             DB.AddParameter("@ClaimID", ClaimID);
             DB.Execute("sproc_tblClaim_FilterByClaimID");
             if (DB.Count == 1)
             {
                 _mClaimID = Convert.ToInt32(DB.DataTable.Rows[0]["ClaimID"]);
-                _mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                _mClaimReason = Convert.ToString(DB.DataTable.Rows[0]["ClaimReason"]);
                 _mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                 _mClaimDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ClaimDate"]);
                 _mClaimAmnt = Convert.ToDecimal(DB.DataTable.Rows[0]["ClaimAmnt"]);
                 _mClaimStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["ClaimStatus"]);
-                _mClaimReason = Convert.ToString(DB.DataTable.Rows[0]["ClaimReason"]);
+                _mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+
                 return true;
             }
             else
@@ -76,21 +77,22 @@ namespace TravelInsuranceClasses
             }
         }
 
-        public string Valid(string staffID, string customerID, string claimDate, string claimAmnt, string claimReason)
+        public string Valid(string staffID, string customerID, string claimDate, string claimAmnt, string claimReason,
+            string claimStatus)
         {
             var error = "";
 
             //StaffID
-            if (staffID.Length > 0)
-                try
-                {
-                    var staffIDTemp = Convert.ToInt32(staffID); //Null staffID returns 0
-                    if (staffIDTemp <= 0) error += "<br />The StaffID must be above 0";
-                }
-                catch (Exception e1)
-                {
-                    error += "<br />The StaffID wasn't in the correct format or exceeded 2147483648<br />Error: " + e1.Message + "<br />";
-                }
+            try
+            {
+                var staffIDTemp = Convert.ToInt32(staffID); //Null staffID returns 0
+                if (staffIDTemp <= 0) error += "<br />The StaffID must be above 0";
+            }
+            catch (Exception e1)
+            {
+                error += "<br />The StaffID wasn't in the correct format or exceeded 2147483648<br />Error: " +
+                         e1.Message + "<br />";
+            }
 
             //CustomerID
             try
@@ -100,7 +102,8 @@ namespace TravelInsuranceClasses
             }
             catch (Exception e1)
             {
-                error += "<br />The CustomerID wasn't in the correct format or exceeded 2147483648<br />Error: " + e1.Message + "<br />";
+                error += "<br />The CustomerID wasn't in the correct format or exceeded 2147483648<br />Error: " +
+                         e1.Message + "<br />";
             }
 
             //ClaimDate
@@ -119,19 +122,22 @@ namespace TravelInsuranceClasses
 
 
             //ClaimAmnt
-            if (claimAmnt.Length > 0)
-                try
-                {
-                    var claimAmntTemp = Convert.ToDecimal(claimAmnt);
-                    if (claimAmntTemp < 0)
-                        error += "<br />The ClaimAmnt must not be less than 0";
-                    else if (claimAmntTemp >= 1000000.00M)
-                        error += "<br />The ClaimAmnt may not be equal or larger from 1000000.00";
-                }
-                catch (Exception e1)
-                {
-                    error += "<br />The ClaimAmnt was not in the correct format<br />Error: " + e1.Message + "<br />";
-                }
+            try
+            {
+                var claimAmntTemp = Convert.ToDecimal(claimAmnt);
+                if (claimAmntTemp < 0)
+                    error += "<br />The ClaimAmnt must not be less than 0";
+                else if (claimAmntTemp >= 1000000.00M)
+                    error += "<br />The ClaimAmnt may not be equal or larger from 1000000.00";
+            }
+            catch (Exception e1)
+            {
+                error += "<br />The ClaimAmnt was not in the correct format<br />Error: " + e1.Message + "<br />";
+            }
+
+
+            //ClaimStatus
+            if (!bool.TryParse(claimStatus, out _)) error += "<br />The ClaimStatus was not Boolean<br />";
 
             //ClaimReason
             if (claimReason.Length <= 0)
