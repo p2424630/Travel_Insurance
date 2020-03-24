@@ -8,11 +8,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="height: 25%; width: 15%">
-            <div>Are you sure you want to delete this record?</div>
-            <asp:Button ID="btnNo" runat="server" style="float: right" Text="No" OnClick="btnNo_Click" />
-            <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" Width="56px" />
-        </div>
-  </form>
+        <div style="display: grid; grid-template-columns: auto; grid-template-rows: 50% 50%; width: 300px">
+                <asp:Label ID="lblDelete" runat="server" Text="Are you sure you want to delete this record?"></asp:Label>
+                <br/>
+                <div style="display: grid; grid-template-columns: 35% 35% 35%">
+                    <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
+                    <a></a>
+                    <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click" />
+                </div>
+            </div>
+    </form>
 </body>
 </html>
