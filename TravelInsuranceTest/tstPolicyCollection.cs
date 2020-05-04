@@ -212,5 +212,24 @@ namespace TravelInsuranceTest
             //test to see that there are no record
             Assert.AreEqual(0, filteredPolicies.Count);
         }
+        [TestMethod]
+        public void ReportByCustomerIdDataFound()
+        {
+            var filteredPolicies = new clsPolicyCollection();
+            var OK = true;
+            filteredPolicies.ReportByCustomerId("26");
+            if (filteredPolicies.Count == 3)
+            {
+                if (filteredPolicies.PolicyList[0].PolicyId != 14) OK = false;
+                if (filteredPolicies.PolicyList[1].PolicyId != 23) OK = false;
+                if (filteredPolicies.PolicyList[2].PolicyId != 36) OK = false;
+            }
+            else
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
     }
 }

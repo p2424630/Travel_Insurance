@@ -95,7 +95,8 @@ public partial class APolicy : Page
     protected void BtnFind_Click(object sender, EventArgs e)
     {
         var aPolicy = new clsPolicy();
-        var PolicyId = Convert.ToInt32(txtPolicyId.Text);
+        PolicyId = Convert.ToInt32(txtPolicyId.Text);
+        Session["PolicyId"] = PolicyId;
         var Found = aPolicy.Find(PolicyId);
         if (!Found) return;
         txtPolicyId.Text = aPolicy.PolicyId.ToString();

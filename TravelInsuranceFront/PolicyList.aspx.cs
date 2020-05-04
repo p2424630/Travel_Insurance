@@ -78,9 +78,9 @@ public partial class PolicyList : System.Web.UI.Page
     }
     protected void btnApply_Click(object sender, EventArgs e)
     {
-        var Policies = new clsClaimCollection();
-        Policies.ReportByClaimReason(txtCustomerId.Text);
-        lstPolicyList.DataSource = Policies.ClaimList;
+        var Policies = new clsPolicyCollection();
+        Policies.ReportByCustomerId(txtCustomerId.Text);
+        lstPolicyList.DataSource = Policies.PolicyList;
         lstPolicyList.DataValueField = "PolicyId";
         lstPolicyList.DataTextField = "CustomerId";
         lstPolicyList.DataBind();
