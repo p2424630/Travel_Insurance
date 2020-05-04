@@ -11,19 +11,28 @@
         }
     </style>
 </head>
-<body style="height: 802px">
+<body>
     <form id="form1" runat="server">
-        <div>
-        </div>
-        <div style="height: 362px; width: 408px">
-        <asp:ListBox ID="lstPolicyList" runat="server" Height="304px" Width="380px"></asp:ListBox>
-            <div style="width: 377px; height: 45px">
+        <div style="height: 500px; width: 450px">
+            <asp:ListBox ID="lstPolicyList" runat="server" Height="88%" Width="100%"></asp:ListBox>
+            <div style="display: grid; grid-template-columns: 150px 150px 150px; grid-template-rows: 100%">
                 <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+                <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
                 <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
-                <br />
-                <asp:Label ID="lblError" runat="server"></asp:Label>
-                <br />
             </div>
+            <div style="display: grid; grid-template-columns: 35% 65%; grid-template-rows: 100%; width: 450px">
+                <asp:Label ID="lblCustomerId" runat="server" Text="Enter Customer ID:"></asp:Label>
+                <asp:TextBox ID="txtCustomerId" runat="server"></asp:TextBox>
+            </div>
+            <br />
+            <div style="display: grid; grid-template-columns: 50% 50%; grid-template-rows: 100%; width: 450px">
+                <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
+                <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+            </div>
+            <br />
+            <p>
+                <asp:Label ID="lblError" runat="server"></asp:Label>
+            </p>
         </div>
     </form>
 </body>

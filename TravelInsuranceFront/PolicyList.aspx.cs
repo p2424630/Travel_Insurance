@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using TravelInsuranceClasses;
 
 public partial class PolicyList : System.Web.UI.Page
 {
@@ -55,5 +51,38 @@ public partial class PolicyList : System.Web.UI.Page
             //display error
             lblError.Text = "Please select a record to delete from the list < /br>";
         }
+    }
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        int PolicyId;
+        if (lstPolicyList.SelectedIndex != -1)
+        {
+            PolicyId = Convert.ToInt32(lstPolicyList.SelectedValue);
+            Session["PolicyId"] = PolicyId;
+            Response.Redirect("APolicy.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to edit from the list";
+        }
+    }
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        var Policies = new clsPolicyCollection();
+        Policies.ReportByCustomerId("");
+        txtCustomerId.Text = "";
+        lstPolicyList.DataSource = Policies.PolicyList;
+        lstPolicyList.DataValueField = "PolicyId";
+        lstPolicyList.DataTextField = "CustomerId";
+        lstPolicyList.DataBind();
+    }
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        var Policies = new clsClaimCollection();
+        Policies.ReportByClaimReason(txtCustomerId.Text);
+        lstPolicyList.DataSource = Policies.ClaimList;
+        lstPolicyList.DataValueField = "PolicyId";
+        lstPolicyList.DataTextField = "CustomerId";
+        lstPolicyList.DataBind();
     }
 }

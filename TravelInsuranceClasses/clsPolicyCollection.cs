@@ -88,5 +88,53 @@ namespace TravelInsuranceClasses
             //execute the stored procedure
             DB.Execute("sproc_tblPolicy_Delete");
         }
+        public void Update()
+        {
+            var DB = new clsDataConnection();
+            DB.AddParameter("@PolicyId", _mThisPolicy.PolicyId);
+            DB.AddParameter("@StaffId", _mThisPolicy.StaffId);
+            DB.AddParameter("@CustomerId", _mThisPolicy.CustomerId);
+            DB.AddParameter("@StartDate", _mThisPolicy.StartDate);
+            DB.AddParameter("@PolicyDetails", _mThisPolicy.PolicyDetails);
+            DB.AddParameter("@Accepted", _mThisPolicy.Accepted);
+            DB.AddParameter("@Price", _mThisPolicy.Price);
+
+            DB.Execute("sproc_tblPolicy_Update");
+        }
+
+        public void ReportByCustomerId(string customerId)
+        {
+            int CustomerId;
+            var DB = new clsDataConnection();
+            CustomerId = Convert.ToInt32(customerId);
+            DB.AddParameter("@CustomerId", CustomerId);
+            DB.Execute("sproc_tblPolicy_FilterByCustomerId");
+            PopulateArray(DB);
+        }
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            var Index = 0;
+            var RecordCount = DB.Count;
+            _mPolicyList = new List<clsPolicy>();
+            while (Index < RecordCount)
+            {
+                //create blank policy
+                clsPolicy aPolicy = new clsPolicy();
+                //read the fields from the current record
+                aPolicy.Accepted = Convert.ToBoolean(DB.DataTable.Rows[Index]["Accepted"]);
+                aPolicy.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                aPolicy.PolicyId = Convert.ToInt32(DB.DataTable.Rows[Index]["PolicyId"]);
+                aPolicy.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                aPolicy.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+                aPolicy.PolicyDetails = Convert.ToString(DB.DataTable.Rows[Index]["PolicyDetails"]);
+                aPolicy.StartDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["StartDate"]);
+
+                //add record to the private data member
+                _mPolicyList.Add(aPolicy);
+                //go to next record
+                Index++;
+            }
+        }
     }
 }
