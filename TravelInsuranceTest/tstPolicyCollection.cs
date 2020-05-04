@@ -149,5 +149,68 @@ namespace TravelInsuranceTest
             //test to see that the record was not found
             Assert.IsFalse(found);
         }
+
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            //instance of class
+            var allPolicies = new clsPolicyCollection();
+            //create an item of test data
+            var testItem = new clsPolicy();
+            //store the PK
+            var primaryKey = 0;
+            //set the properties
+            testItem.Accepted = true;
+            testItem.CustomerId = 111;
+            testItem.PolicyDetails = "Lorem ipsum dolor sit amet,";
+            testItem.PolicyId = 112;
+            testItem.Price = 64.00M;
+            testItem.StaffId = 68;
+            testItem.StartDate = DateTime.Now.Date;
+            //set the ThisPolicy to test data
+            allPolicies.ThisPolicy = testItem;
+            //add record
+            primaryKey = allPolicies.Add();
+            //set the PK of the test data
+            testItem.PolicyId = primaryKey;
+            //modify test data
+            testItem.Accepted = false;
+            testItem.CustomerId = 112;
+            testItem.PolicyDetails = "Lorem ipsum";
+            testItem.PolicyId = 110;
+            testItem.Price = 65.00M;
+            testItem.StaffId = 69;
+            testItem.StartDate = DateTime.Now.Date;
+            //set the record based on the new test data
+            allPolicies.ThisPolicy = testItem;
+            //update the record
+            allPolicies.Update();
+            //find the record
+            allPolicies.ThisPolicy.Find(primaryKey);
+            var found = allPolicies.ThisPolicy.Find(primaryKey);
+            //test to see that the record was not found
+            Assert.AreEqual(allPolicies.ThisPolicy, testItem);
+        }
+        [TestMethod]
+        public void ReportByCustomerIdOk()
+        {
+            //instance of class
+            var allPolicies = new clsPolicyCollection();
+            //filtered data instance
+            var filteredPolicies = new clsPolicyCollection();
+            //apply blank string (all records)
+            filteredPolicies.ReportByCustomerId("");
+            //test if same
+            Assert.AreEqual(allPolicies.Count, filteredPolicies.Count);
+        }
+        public void ReportByCustomerIdNoneFound()
+        {
+            //filtered data instance
+            var filteredPolicies = new clsPolicyCollection();
+            //apply blank string (all records)
+            filteredPolicies.ReportByCustomerId("000");
+            //test to see that there are no record
+            Assert.AreEqual(0, filteredPolicies.Count);
+        }
     }
 }
