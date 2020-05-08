@@ -595,7 +595,7 @@ namespace TravelInsuranceTest
             Assert.AreEqual(Error, "");
         }
 
-        //ClaimSatus Test
+        //ClaimStatus Test
         [TestMethod]
         public void ClaimStatusNotBoolean()
         {
