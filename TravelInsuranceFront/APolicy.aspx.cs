@@ -61,7 +61,7 @@ public partial class APolicy : Page
             // Session["APolicy"] = aPolicy;
             //create a new instance of the policy collection
             var policyList = new clsPolicyCollection();
-            
+
             //if this is a new record
             if (PolicyId == -1)
             {
@@ -98,7 +98,12 @@ public partial class APolicy : Page
         PolicyId = Convert.ToInt32(txtPolicyId.Text);
         Session["PolicyId"] = PolicyId;
         var Found = aPolicy.Find(PolicyId);
-        if (!Found) return;
+        if (!Found)
+        {
+            string errorString = string.Format("<br /><b>PolicyID: {0}</b> Not In DB. Try a different PolicyID!<br />", PolicyId);
+            lblError.Text = errorString;
+            return;
+        }
         txtPolicyId.Text = aPolicy.PolicyId.ToString();
         txtStaffId.Text = aPolicy.StaffId.ToString();
         txtCustomerId.Text = aPolicy.CustomerId.ToString();

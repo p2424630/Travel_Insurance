@@ -49,7 +49,7 @@ public partial class PolicyList : System.Web.UI.Page
         else
         {
             //display error
-            lblError.Text = "Please select a record to delete from the list < /br>";
+            lblError.Text = "<br />Please select a record to delete from the list<br />";
         }
     }
     protected void btnEdit_Click(object sender, EventArgs e)
