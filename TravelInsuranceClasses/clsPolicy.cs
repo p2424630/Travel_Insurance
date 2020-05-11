@@ -31,8 +31,8 @@ namespace TravelInsuranceClasses
             set => _mStartDate = value;
         }
 
-        //PolicyID public property
-        public int PolicyID
+        //PolicyId public property
+        public int PolicyId
         {
             //sends data out of property
             get => _mPolicyId;
@@ -40,7 +40,7 @@ namespace TravelInsuranceClasses
             set => _mPolicyId = value;
         }
 
-        public int StaffID
+        public int StaffId
         {
             //sends data out of property
             get => _mStaffId;
@@ -48,7 +48,7 @@ namespace TravelInsuranceClasses
             set => _mStaffId = value;
         }
 
-        public int CustomerID
+        public int CustomerId
         {
             //sends data out of property
             get => _mCustomerId;
@@ -76,7 +76,7 @@ namespace TravelInsuranceClasses
         {
             //create instance of data connection
             clsDataConnection DB = new clsDataConnection();
-            //add the parameter for the PolicyID to search for
+            //add the parameter for the PolicyId to search for
             DB.AddParameter("@PolicyId", PolicyId);
             //execute the stored procedure
             DB.Execute("sproc_tblPolicy_FilterByPolicyId");
