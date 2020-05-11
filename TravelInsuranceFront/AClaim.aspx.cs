@@ -78,6 +78,7 @@ public partial class AClaim : Page
         {
             lblError.Text = "";
             ClaimID = ClaimIDTemp;
+            Session["ClaimID"] = ClaimID;
             var Found = AClaim.Find(ClaimID);
             if (Found)
             {
@@ -88,6 +89,10 @@ public partial class AClaim : Page
                 txtClaimAmnt.Text = Convert.ToString(AClaim.ClaimAmnt);
                 txtClaimStatus.Text = Convert.ToString(AClaim.ClaimStatus);
                 txtClaimReason.Text = Convert.ToString(AClaim.ClaimReason);
+            }
+            else
+            {
+                lblError.Text = "<br />[ClaimID]: "+ ClaimID + " - is not in the Database!!<br />";
             }
         }
     }
