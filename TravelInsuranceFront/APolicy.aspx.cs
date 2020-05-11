@@ -95,26 +95,44 @@ public partial class APolicy : Page
     protected void BtnFind_Click(object sender, EventArgs e)
     {
         var aPolicy = new clsPolicy();
-        PolicyId = Convert.ToInt32(txtPolicyId.Text);
-        Session["PolicyId"] = PolicyId;
-        var Found = aPolicy.Find(PolicyId);
-        if (!Found)
+        int PolicyIdTemp;
+        if (!int.TryParse(txtPolicyId.Text, out PolicyIdTemp))
         {
-            string errorString = string.Format("<br /><b>PolicyID: {0}</b> Not In DB. Try a different PolicyID!<br />", PolicyId);
-            lblError.Text = errorString;
-            return;
+            lblError.Text = string.Format("<br /><b>PolicyID: {0}</b> is not Integer!", txtPolicyId.Text);
         }
-        txtPolicyId.Text = aPolicy.PolicyId.ToString();
-        txtStaffId.Text = aPolicy.StaffId.ToString();
-        txtCustomerId.Text = aPolicy.CustomerId.ToString();
-        txtPolicyDetails.Text = aPolicy.PolicyDetails;
-        txtPrice.Text = aPolicy.Price.ToString();
-        chkAccepted.Checked = aPolicy.Accepted;
-        calStartDate.VisibleDate = aPolicy.StartDate;
-        calStartDate.SelectedDate = aPolicy.StartDate;
+        else
+        {
+            PolicyId = PolicyIdTemp;
+            Session["PolicyId"] = PolicyId;
+            var Found = aPolicy.Find(PolicyId);
+            if (!Found)
+            {
+                string errorString = string.Format("<br /><b>PolicyID: {0}</b> Not In DB. Try a different PolicyID!<br />", PolicyId);
+                lblError.Text = errorString;
+                return;
+            }
+            txtPolicyId.Text = aPolicy.PolicyId.ToString();
+            txtStaffId.Text = aPolicy.StaffId.ToString();
+            txtCustomerId.Text = aPolicy.CustomerId.ToString();
+            txtPolicyDetails.Text = aPolicy.PolicyDetails;
+            txtPrice.Text = aPolicy.Price.ToString();
+            chkAccepted.Checked = aPolicy.Accepted;
+            calStartDate.VisibleDate = aPolicy.StartDate;
+            calStartDate.SelectedDate = aPolicy.StartDate;
+        }
+        
     }
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
+        txtPolicyId.Text = "";
+        txtStaffId.Text = "";
+        txtCustomerId.Text = "";
+        txtPolicyDetails.Text = "";
+        txtPrice.Text = "";
+        lblError.Text = "";
+        chkAccepted.Checked = false;
+        calStartDate.VisibleDate = DateTime.Now;
+        calStartDate.SelectedDate = DateTime.Now;
     }
 }
