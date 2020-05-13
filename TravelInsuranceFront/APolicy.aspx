@@ -30,7 +30,7 @@
             <br/>
             <br/>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" style="height: 26px"/>
-            <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/>
+            <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" style="height: 26px"/>
         </div>
 
         <div class="policy textbox">

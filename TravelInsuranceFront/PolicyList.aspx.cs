@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using TravelInsuranceClasses;
 
 public partial class PolicyList : System.Web.UI.Page
@@ -16,7 +17,7 @@ public partial class PolicyList : System.Web.UI.Page
     private void DisplayPolicies()
     {
         //instance of Policy Collection
-        TravelInsuranceClasses.clsPolicyCollection Policies = new TravelInsuranceClasses.clsPolicyCollection();
+        clsPolicyCollection Policies = new clsPolicyCollection();
         //set the datasource to the list of policies
         lstPolicyList.DataSource = Policies.PolicyList;
         //set the name of primary key
@@ -52,6 +53,7 @@ public partial class PolicyList : System.Web.UI.Page
             lblError.Text = "<br />Please select a record to delete from the list<br />";
         }
     }
+
     protected void btnEdit_Click(object sender, EventArgs e)
     {
         int PolicyId;
@@ -66,6 +68,7 @@ public partial class PolicyList : System.Web.UI.Page
             lblError.Text = "Please select a record to edit from the list";
         }
     }
+
     protected void btnClear_Click(object sender, EventArgs e)
     {
         var Policies = new clsPolicyCollection();
@@ -76,6 +79,7 @@ public partial class PolicyList : System.Web.UI.Page
         lstPolicyList.DataTextField = "CustomerId";
         lstPolicyList.DataBind();
     }
+
     protected void btnApply_Click(object sender, EventArgs e)
     {
         var Policies = new clsPolicyCollection();

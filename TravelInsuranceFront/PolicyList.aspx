@@ -14,6 +14,7 @@
 <body>
     <form id="form1" runat="server">
         <div style="height: 500px; width: 450px">
+            <asp:Label ID="lblInfo" runat="server" Text="List of Customer IDs:"></asp:Label>
             <asp:ListBox ID="lstPolicyList" runat="server" Height="88%" Width="100%"></asp:ListBox>
             <div style="display: grid; grid-template-columns: 150px 150px 150px; grid-template-rows: 100%">
                 <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />

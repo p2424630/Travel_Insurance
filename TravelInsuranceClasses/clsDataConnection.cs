@@ -39,9 +39,18 @@ namespace TravelInsuranceClasses
 
         private string GetConnectionString()
         {
-            System.Net.WebClient client = new System.Net.WebClient();
-            string downloadString = client.DownloadString("http://localhost:5000/");
-            return downloadString;
+            try
+            {
+                System.Net.WebClient client = new System.Net.WebClient();
+                string downloadString = client.DownloadString("http://localhost:5000/");
+                return downloadString;
+            }
+            catch (Exception e)
+            {
+                HttpContext.Current.Response.Redirect("DBError/dberror.html");
+            }
+
+            return null;
         }
 
         public string GetDBName()
