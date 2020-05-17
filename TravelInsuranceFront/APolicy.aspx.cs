@@ -41,6 +41,11 @@ public partial class APolicy : Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         var aPolicy = new clsPolicy();
+        if (txtPolicyId.Text == "")
+        {
+            lblError.Text = "Please enter a Policy ID";
+            return;
+        }
         aPolicy.PolicyId = int.Parse(txtPolicyId.Text);
         var staffId = txtStaffId.Text;
         var customerId = txtCustomerId.Text;
